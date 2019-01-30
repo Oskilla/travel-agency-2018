@@ -6,6 +6,9 @@ import org.apache.commons.lang3.tuple.Pair;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * A Calendar stores a list of travels for an agent
+ */
 public class Calendar {
     // list of (travel, who added the travel to the calendar)
     // this way, we can track who added which travel!
