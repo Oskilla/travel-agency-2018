@@ -10,3 +10,4 @@ Make Travel Agencies great again
 - proper naming of methods
 - check for code smells and anti-patterns
 - proper javadoc for maintainers
+- do the GUI using JavaFX
