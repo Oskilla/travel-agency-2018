@@ -21,11 +21,6 @@ Pour ce faire, cliquez sur l'icône "Fork" de la page du projet our accéder au 
 
 5. Le cycle de travail sera donc le suivant: Analyse -> Création d'une issue sur votre projet Gitlab -> Modification des sources -> Validation.
 
-6. Plusieurs outils d'analyse automatique du code sont déjà présents dans le projet: PMD, Checkstyle et Findbugs. Faites le tri des informations: ces outils détectent beaucoup d'erreurs et vous ne pourrez pas toutes les résoudre. Concentrez vous sur les plus importantes. Vous pouvez obtenir leurs rapports directement avec Maven:
-```
-mvn site
-```
-
 # Travail à réaliser
 
 **Le travail à réaliser est réparti en 4 packages de tâches**, plus un package bonus. Vous serez noté sur la qualité de réalisation des tâches de chaque package. Le dernier package, celui bonus, est optionel et n'apportera que des points bonus.
@@ -41,6 +36,15 @@ Le code du projet est là pour vous fournir une base de code. Vous êtes libre d
 * Pour être évalué, tout étudiant doit participer activement du projet, en réalisant des "commits", en ajoutant des lignes de code, en ouvrant des "issues" sur le serveur GitLab, etc.
 
 * L'évaluation portera sur la qualité des modifications apportées au projet: code, test unitaires, javadoc, commentaires, etc.
+
+## Dépendances Maven
+
+Le projet de démarrage est configuré comme un projet Maven standard. Vous êtes libres d'ajouter de nouvelles extensions lors du développement du projet. Par défaut, les dépendances suivantes sont configurées:
+* JUnit ([https://junit.org/junit5/](https://junit.org/junit5/)) pour gérer les tests.
+
+* Joda Time ([https://www.joda.org/joda-time/](https://www.joda.org/joda-time/)) pour manipuler des dates.
+
+* Apache Commons Lang ([https://commons.apache.org/proper/commons-lang/](https://commons.apache.org/proper/commons-lang/)) qui fournit une extension de la librairie Java standard.
 
 # Tâches à réaliser
 
@@ -67,7 +71,7 @@ Comme précédemment, le code fourni au démarrage présente un autre défaut: i
 En détails, les tâches de ce package sont:
 * Identifier des cas de tests pour valider le comportement de chaque méthode du projet. Vous penserez notamment à valider que toutes les containtes identifiées précédemment sont correctement vérifiées.
 
-* Écrire la suite de tests correspondante en utilisant la librarie JUnit.
+* Écrire la suite de tests correspondante en utilisant la librairie JUnit.
 
 * Maximiser la couverture de code atteinte par vos tests.
 
@@ -103,5 +107,5 @@ Les fonctionnalités minimum à implémenter sont les suivantes:
 Pour les hackers fous ou ceux en avance, vous pouvez également essayer d'implémenter un stockage persitant des informations du logiciel. En l'état, toutes les données sont perdues à la fermeture de la fenête. Vous pouvez travailler à mettre en oeuvre une solution pour que les données soient conservées d'une session sur l'autre.
 
 Quelques pistes:
-* La librarie `SQLite` permet de gérer une base données SQL stockée dans un simple fichier. Plus d'informations: http://www.sqlitetutorial.net/sqlite-java/
-* ...
+* La librairie Java standard supporte la serialization/deserialization d'objets sur le disque. Plus d'informations: https://www.tutorialspoint.com/java/java_serialization.htm
+* La librairie `SQLite` permet de gérer une base données SQL stockée dans un simple fichier. Plus d'informations: http://www.sqlitetutorial.net/sqlite-java/
