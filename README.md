@@ -23,9 +23,9 @@ Pour ce faire, cliquez sur l'icône "Fork" de la page du projet our accéder au 
 
 # Travail à réaliser
 
-**Le travail à réaliser est réparti en 4 packages de tâches**, plus un package bonus. Vous serez noté sur la qualité de réalisation des tâches de chaque package. Le dernier package, celui bonus, est optionel et n'apportera que des points bonus.
+**Le travail à réaliser est réparti en 4 tâches**, plus une tâche bonus. Vous serez noté sur la qualité de réalisation des tâches. La dernière tâche, en bonus, est optionelle et n'apportera que des points bonus.
 
-L'ordre packages vous donne une idée de l'ordre dans lequel réaliser le projet. Vous n'êtes pas forcément obligé de respecter cet ordre, tant que toutes les tâches sont complétées à la fin du projet.
+L'ordre des tâches vous donne une idée de l'ordre dans lequel réaliser le projet. Vous n'êtes pas forcément obligé de respecter cet ordre, tant que toutes les tâches sont complétées à la fin du projet.
 
 Le code du projet est là pour vous fournir une base de code. Vous êtes libre de **modifier l'implémentation comme vous l'entendez**, voir même de modifier le modèle UML en lui même ! Attention cependant, **vous devrez motiver tous vos choix d'implémentation !**
 
@@ -48,11 +48,11 @@ Le projet de démarrage est configuré comme un projet Maven standard. Vous ête
 
 # Tâches à réaliser
 
-Vous trouverez çi-dessous le diagramme UML du projet, ainsiq ue tous les packages de tâches à réaliser.
+Vous trouverez çi-dessous le diagramme UML du projet, ainsi que toutes les tâches à réaliser.
 
 ![UML projet](uml.png)
 
-## Package 1 : Contraintes du modèle
+## Tâche 1 : Contraintes du modèle
 
 Le code donnée au démarrage du projet ne vérifie aucune des contraintes indiquée dans le modèle UML (contraintes d'unicité, cardinalité et intégrité des associations, handshake, etc).
 
@@ -64,26 +64,26 @@ Votre première tâche est d'implémenter toutes ces contraintes. Pour ce faire,
 
 3. Pour chaque contrainte, implémenter le nécessaire pour la vérifier, puis faites un commit qui référence l'issue associée.
 
-## Package 2 : Tests du modèle
+## Tâche 2 : Tests du modèle
 
-Comme précédemment, le code fourni au démarrage présente un autre défaut: il ne contient aucun test ! Votre tâche suivante est **d'implémenter une suite de tests pour valider l'implémentation du modèle**. En d'autres termes, *il vous faut tester tout le code produit pour le package précédent* ;-)
+Comme précédemment, le code fourni au démarrage présente un autre défaut: il ne contient aucun test ! Votre tâche suivante est **d'implémenter une suite de tests pour valider l'implémentation du modèle**. En d'autres termes, *il vous faut tester tout le code produit pour la tâche précédente* ;-)
 
-En détails, les tâches de ce package sont:
+En résumé, vous devez:
 * Identifier des cas de tests pour valider le comportement de chaque méthode du projet. Vous penserez notamment à valider que toutes les containtes identifiées précédemment sont correctement vérifiées.
 
 * Écrire la suite de tests correspondante en utilisant la librairie JUnit.
 
 * Maximiser la couverture de code atteinte par vos tests.
 
-## Package 3 : Gestion des utilisateurs
+## Tâche 3 : Gestion des utilisateurs
 
-Pour ce package, on vous demande d'ajouter une nouvelle fonctionnalité au projet: la gestion des utilisateurs. Vous devez étendre le modèle UML et l'implémenter pour ajouter les fonctionnalités suivantes:
+Pour cette tâche, on vous demande d'ajouter une nouvelle fonctionnalité au projet: la gestion des utilisateurs. Vous devez étendre le modèle UML et l'implémenter pour ajouter les fonctionnalités suivantes:
 
 * Gestion d'une liste d'utilisateurs (agent ou administrateur) avec support pour l'ajout et la suppression.
 * Gestion de l'identification des utilisateurs: chaque utilisateur doit pouvoir se connecter avec un mot de passe, dont la vérification sera géré par le logiciel.
 * Filtrage de la liste ??
 
-## Package 4 : Interface graphique
+## Tâche 4 : Interface graphique
 
 La dernière étape du projet consiste à implémenter une interface graphique pour pouvoir utiliser le logiciel. Pour ce faire, vous utiliserez la librairie JavaFx, présente dans le JDK Java par défaut. Un code de démarrage vous est fourni dans la classe `GUI` (package `fr.unantes.software.construction.ui`).
 
@@ -100,9 +100,9 @@ Les fonctionnalités minimum à implémenter sont les suivantes:
 
 5. Ajout de nouvelles destinations (villes) pour les voyages.
 
-## Package bonus : Persistence des données
+## Tâche bonus : Persistence des données
 
-**Attention: les tâches suivantes sont optionelles et ne doivent être considérés qu'une fois les autres packages terminés.**
+**Attention: les tâches suivantes sont optionelles et ne doivent être considérés qu'une fois les autres tâches terminés.**
 
 Pour les hackers fous ou ceux en avance, vous pouvez également essayer d'implémenter un stockage persitant des informations du logiciel. En l'état, toutes les données sont perdues à la fermeture de la fenête. Vous pouvez travailler à mettre en oeuvre une solution pour que les données soient conservées d'une session sur l'autre.
 
