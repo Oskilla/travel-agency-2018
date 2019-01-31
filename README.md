@@ -46,7 +46,7 @@ Le code du projet est là pour vous fournir une base de code. Vous êtes libre d
 
 Vous trouverez çi-dessous le diagramme UML du projet, ainsiq ue tous les packages de tâches à réaliser.
 
-Diagramme UML du projet...
+![UML projet](uml.png)
 
 ## Package 1 : Contraintes du modèle
 

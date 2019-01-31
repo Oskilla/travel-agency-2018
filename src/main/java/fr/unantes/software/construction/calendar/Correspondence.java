@@ -5,16 +5,26 @@ import org.joda.time.DateTime;
 import java.util.Objects;
 
 public class Correspondence {
+    private Travel travel;
     private City startCity;
     private City destinationCity;
     private DateTime startTime;
     private DateTime arrivalTime;
 
-    public Correspondence(City startCity, City destinationCity, DateTime startTime, DateTime arrivalTime) {
+    public Correspondence(Travel travel, City startCity, City destinationCity, DateTime startTime, DateTime arrivalTime) {
+        this.travel = travel;
         this.startCity = startCity;
         this.destinationCity = destinationCity;
         this.startTime = startTime;
         this.arrivalTime = arrivalTime;
+    }
+
+    public Travel getTravel() {
+        return travel;
+    }
+
+    public void setTravel(Travel travel) {
+        this.travel = travel;
     }
 
     public City getStartCity() {
@@ -62,6 +72,6 @@ public class Correspondence {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getStartCity(), getDestinationCity(), getStartTime(), getArrivalTime());
+        return Objects.hash(getTravel(), getStartCity(), getDestinationCity(), getStartTime(), getArrivalTime());
     }
 }
