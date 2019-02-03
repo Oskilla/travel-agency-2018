@@ -11,9 +11,9 @@ Ce travail sera réalisé par groupe de 2 étudiants.
 Quelques règles de mise en œuvre et gestion du projet:
 
 1. Avant toutes choses, créez un **"Fork"** du projet sur le serveur.
-Pour ce faire, cliquez sur l'icône "Fork" de la page du projet our accéder au lien suivant: [https://gitlab.univ-nantes.fr/naomod/software-construction-course/alma-gtd/forks/new](https://gitlab.univ-nantes.fr/naomod/software-construction-course/alma-gtd/forks/new)
+Pour ce faire, cliquez sur l'icône "Fork" (ou "Créer une divergence" en français) de la page du projet our accéder au lien suivant: [https://gitlab.univ-nantes.fr/naomod/software-construction-course/alma-gtd/forks/new](https://gitlab.univ-nantes.fr/naomod/software-construction-course/alma-gtd/forks/new)
 
-2. Clonez **votre fork du projet** (et non pas celui d'origine). Toutes vos modifications devront être poussées sur votre fork.
+2. Clonez **votre fork du projet** (et non pas celui d'origine). Toutes vos modifications devront être poussées sur votre fork et toutes les issues (ou "tickets" en français) ouvertes le seront sur votre version du projet.
 
 3. **Il ne doit y avoir qu'un seul "fork" par groupe d'étudiants.** Il sera utilisé comme espace de rendu des fichiers lié au projet.
 
@@ -49,6 +49,7 @@ Le projet de démarrage est configuré comme un projet Maven standard. Vous ête
 # Tâches à réaliser
 
 Vous trouverez çi-dessous le diagramme UML du projet, ainsi que toutes les tâches à réaliser.
+Par soucis de simplicité, les méthodes getters et setter ont été ignorées.
 
 ![UML projet](uml.png)
 
@@ -58,38 +59,40 @@ Le code donnée au démarrage du projet ne vérifie aucune des contraintes indiq
 
 Votre première tâche est d'implémenter toutes ces contraintes. Pour ce faire, nous vous proposons le protocole de travail suivant:
 
-1. Identifier toutes les contraintes du modèle. Essayer de les réduire le plus possible, pour arriver à un ensemble de contraintes dites "atomiques". Un bon exemple est "Un calendrier ne peut appartenir qu'à une seule personne".
+1. Identifier toutes les contraintes du modèle (sur les attributs, les associations, etc). Essayer de les réduire le plus possible, pour arriver à un ensemble de contraintes dites "atomiques". Un bon exemple est "Un calendrier ne peut appartenir qu'à une seule personne".
 
-2. Pour chaque contrainte atomique, ouvrez une isue correspondante, qui décrit la contrainte à vérifier et les classes concernées.
+2. Pour chaque contrainte atomique, ouvrez une "issue" (ou "ticket" en français) correspondante, qui décrit la contrainte à vérifier et les classes concernées.
 
 3. Pour chaque contrainte, implémenter le nécessaire pour la vérifier, puis faites un commit qui référence l'issue associée.
 
 ## Tâche 2 : Tests du modèle
 
-Comme précédemment, le code fourni au démarrage présente un autre défaut: il ne contient aucun test ! Votre tâche suivante est **d'implémenter une suite de tests pour valider l'implémentation du modèle**. En d'autres termes, *il vous faut tester tout le code produit pour la tâche précédente* ;-)
+Comme précédemment, le code fourni au démarrage présente un autre défaut: il ne contient aucun test unitaire ! Votre tâche suivante est **d'implémenter une suite de tests pour valider l'implémentation du modèle**. En d'autres termes, *il vous faut tester tout le code produit pour la tâche précédente* ;-)
 
-En résumé, vous devez:
-* Identifier des cas de tests pour valider le comportement de chaque méthode du projet. Vous penserez notamment à valider que toutes les containtes identifiées précédemment sont correctement vérifiées.
+Pour ce faire, nous vous proposons le protocole de travail suivant:
 
-* Écrire la suite de tests correspondante en utilisant la librairie JUnit.
+1. Identifier des cas de tests pour valider le comportement de chaque méthode du projet. Vous penserez notamment à valider que toutes les containtes identifiées précédemment sont correctement vérifiées.
 
-* Maximiser la couverture de code atteinte par vos tests.
+2. Pour chaque cas de test, ouvrez une isue correspondante, qui décrit ce que le test doit vérifier et le scénario de test associé.
+
+3. Implémenter chaque cas de tests en utilisant la librairie JUnit, puis faites un commit qui référence l'issue associée.
 
 ## Tâche 3 : Gestion des utilisateurs
 
-Pour cette tâche, on vous demande d'ajouter une nouvelle fonctionnalité au projet: la gestion des utilisateurs. Vous devez étendre le modèle UML et l'implémenter pour ajouter les fonctionnalités suivantes:
+Pour cette tâche, on vous demande d'ajouter une nouvelle fonctionnalité au projet: la gestion des utilisateurs. Pour ce faire, vous devez étendre le modèle UML et le code proposé pour ajouter les fonctionnalités suivantes:
 
-* Gestion d'une liste d'utilisateurs (agent ou administrateur) avec support pour l'ajout et la suppression.
+* Gestion d'une liste d'utilisateurs (agent ou administrateur) avec support pour l'ajout et la suppression d'utilisateurs.
 * Gestion de l'identification des utilisateurs: chaque utilisateur doit pouvoir se connecter avec un mot de passe, dont la vérification sera géré par le logiciel.
-* Filtrage de la liste ??
+
+Là encore, vous pourrez suivre un protcole basé sur un cycle "ouverture d'issue/implémentation/commit".
 
 ## Tâche 4 : Interface graphique
 
 La dernière étape du projet consiste à implémenter une interface graphique pour pouvoir utiliser le logiciel. Pour ce faire, vous utiliserez la librairie JavaFx, présente dans le JDK Java par défaut. Un code de démarrage vous est fourni dans la classe `GUI` (package `fr.unantes.software.construction.ui`).
 
-Vpus n'êtes pas obligé de réaliser une **belle** interface, tant qu'elle respecte les consignes et qu'elle est facilement utilisable.
+Vous n'êtes pas obligé de réaliser une **belle** interface, tant qu'elle respecte les consignes et qu'elle est facilement utilisable.
 
-Les fonctionnalités minimum à implémenter sont les suivantes:
+Les fonctionnalités minimales à implémenter sont les suivantes:
 1. Gestion de la connexion/déconnexion de l'utilisateur.
 
 2. Enregistrement d'un nouvel utilisateur (avec mot de passe).
@@ -98,13 +101,13 @@ Les fonctionnalités minimum à implémenter sont les suivantes:
 
 4. Réservation/annluation d'un voyage (avec ou sans correspondances) par un administrateur pour le compte d'un agent.
 
-5. Ajout de nouvelles destinations (villes) pour les voyages.
+5. Ajout de nouvelles destinations pour les voyages.
 
 ## Tâche bonus : Persistence des données
 
-**Attention: les tâches suivantes sont optionelles et ne doivent être considérés qu'une fois les autres tâches terminés.**
+**Attention: la tâche suivante est optionelle et ne doit être considéré qu'une fois les autres tâches terminées.**
 
-Pour les hackers fous ou ceux en avance, vous pouvez également essayer d'implémenter un stockage persitant des informations du logiciel. En l'état, toutes les données sont perdues à la fermeture de la fenête. Vous pouvez travailler à mettre en oeuvre une solution pour que les données soient conservées d'une session sur l'autre.
+Pour les hackers fous, vous pouvez également essayer d'implémenter un stockage persitant des informations du logiciel. En l'état, toutes les données sont perdues à la fermeture de la fenête. Vous pouvez travailler à mettre en oeuvre une solution pour que les données soient conservées d'une session sur l'autre.
 
 Quelques pistes:
 * La librairie Java standard supporte la serialization/deserialization d'objets sur le disque. Plus d'informations: https://www.tutorialspoint.com/java/java_serialization.htm
