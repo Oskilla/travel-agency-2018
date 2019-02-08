@@ -2,17 +2,19 @@ package fr.unantes.software.construction.calendar;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Vector;
 
 /**
  * A Travel goes from one place to another, with a departure date and an arrival date
  */
 public class Travel {
-    private List<Correspondence> steps;
+
+    private Vector steps;
     private Calendar parent;
 
     public Travel(Calendar parent) {
         this.parent = parent;
-        steps = new LinkedList<>();
+        steps = new Vector();
     }
 
     public Calendar getParent() {
@@ -24,11 +26,11 @@ public class Travel {
     }
 
     public Correspondence getFirstStep() {
-        return steps.get(0);
+        return (Correspondence) steps.get(0);
     }
 
     public Correspondence getLastStep() {
-        return steps.get(steps.size() - 1);
+        return (Correspondence) steps.get(steps.size() - 1);
     }
 
     public boolean addCorrespondence(Correspondence step) {

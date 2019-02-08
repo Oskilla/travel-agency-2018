@@ -1,17 +1,15 @@
 package fr.unantes.software.construction.calendar;
 
-import org.junit.After;
-import org.junit.Before;
-
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 
 public class TravelTest {
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
     }
 
-    @After
+    @AfterEach
     public void tearDown() throws Exception {
     }
 }

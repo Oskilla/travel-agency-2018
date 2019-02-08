@@ -2,19 +2,18 @@ package fr.unantes.software.construction.calendar;
 
 import fr.unantes.software.construction.people.Agent;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Vector;
 
 /**
  * A Calendar stores a list of travels for an agent
  */
 public class Calendar {
-    private List<Travel> travels;
+    private Vector travels;
     private Agent owner;
 
     public Calendar(Agent owner) {
         this.owner = owner;
-        travels = new LinkedList<>();
+        travels = new Vector();
     }
 
     public Agent getOwner() {
