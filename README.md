@@ -23,19 +23,41 @@ Pour ce faire, cliquez sur l'icône "Fork" (ou "Créer une divergence" en franç
 
 # Travail à réaliser
 
-**Le travail à réaliser est réparti en 4 tâches**, plus une tâche bonus. Vous serez noté sur la qualité de réalisation des tâches. La dernière tâche, en bonus, est optionelle et n'apportera que des points bonus.
+Le travail à réaliser est réparti en différentes "issues" (ou tickets), répertoriées dans le fichier [`ISSUES.md`](https://gitlab.univ-nantes.fr/naomod/software-construction-course/travel-agency/blob/master/ISSUES.md). **Le but du projet est de résoudre tous ces tickets.** Pour ce faire, **vous devrez suivre le protocole de travail suivant**, suivant la méthodologie Test-Driven Development (TDD).
 
-L'ordre des tâches vous donne une idée de l'ordre dans lequel réaliser le projet. Vous n'êtes pas forcément obligé de respecter cet ordre, tant que toutes les tâches sont complétées à la fin du projet.
+Pour chaque ticket du fichier [`ISSUES.md`](https://gitlab.univ-nantes.fr/naomod/software-construction-course/travel-agency/blob/master/ISSUES.md):
 
-Le code du projet est là pour vous fournir une base de code. Vous êtes libre de **modifier l'implémentation comme vous l'entendez**, voir même de modifier le modèle UML en lui même ! Attention cependant, **vous devrez motiver tous vos choix d'implémentation !**
+1. Ouvrez un ticket dans votre projet Gitlab (sur l'interface en ligne de Gitlab, section *Tickets*). Vous y détaillerez les points suivants:
+  * Un bref résumé du problème lié au ticket.
+  * Quels sont les tests à mettre en oeuvre pour vérifier que le ticket a bien été résolu ?
+  * Comment la solution au ticket doit être mise en oeuvre ?
+
+2. Créer la/les classes de tests et les tests unitaires qui permetteront de valider la résolution du ticket. Pour le nommage de vos tests, vous pouvez vous référer à la ressource suivante: [https://dzone.com/articles/7-popular-unit-test-naming](https://dzone.com/articles/7-popular-unit-test-naming).
+
+3. Implémenter de quoi résoudre le ticket. Les tests écrits précédemment devront valider votre implémentation. *Faites attention à la regression!*: toute modification ne doit pas "casser" du code fonctionnel.
+
+4. Si jamais vous devez changer d'approche au niveau des tests, de l'implémentation, etc, **ajouter un commentaire sur le ticket Gitlab**  pour commenter tout changement. **N'éditez pas le texte du ticket original**, afin de garder un historique de votre travail.
+
+5. Effectuer un commit de vos modifications, en référençant le numéro du ticket et en indiquant votre progression dans sa résolution. Nous vous invitons à lire le billet suivant à ce sujet: [https://chris.beams.io/posts/git-commit/][https://chris.beams.io/posts/git-commit/].
+
+6. Enfin, quand le ticket est résolu, marquer le comme "résolu" dans l'interface de Gitlab.
+
+Le code du projet est là pour vous fournir une base de code. Vous êtes libre de *modifier l'implémentation comme vous l'entendez*, voir même de modifier le modèle UML en lui même !  **Mais attention, vous devrez motiver tous vos changements dans vos différents tickets/commits !!!**
 
 ## Evaluation
 
-* Le travail à rendre se composera des sources java du projet et de l'historique de commits. Pensez à soigner vos messages, en indiquant bien le but de chaque commit, quelle issue il règle, etc.
+* Le travail à rendre se composera de votre **fork en ligne Gitalb**, sur lequel vous aurez pousser toutes vos modifications. Cela inclut également tous les messages de commits et tickets ouverts.
 
-* Pour être évalué, tout étudiant doit participer activement du projet, en réalisant des "commits", en ajoutant des lignes de code, en ouvrant des "issues" sur le serveur GitLab, etc.
+* Pour être évalué, **tout étudiant doit participer activement du projet**, en réalisant des "commits", en ajoutant des lignes de code, en ouvrant des tickets sur le serveur GitLab, etc.
 
-* L'évaluation portera sur la qualité des modifications apportées au projet: code, test unitaires, javadoc, commentaires, etc.
+* L'évaluation portera sur les citères suivants :
+  * Respect du protocole de développement donné dans l'énoncé.
+  * Qualité des tickets ouverts sur votre projet Gitlab en ligne.
+  * Qualité du code produit.
+  * Qualité et pertinence des tests unitaires mis en place.
+  * Qualité des messages de commits.
+  * Approche choisie pour résoudre chaque ticket.
+  * Nombre de tickets résolus.
 
 ## Dépendances Maven
 
@@ -45,70 +67,3 @@ Le projet de démarrage est configuré comme un projet Maven standard. Vous ête
 * Joda Time ([https://www.joda.org/joda-time/](https://www.joda.org/joda-time/)) pour manipuler des dates.
 
 * Apache Commons Lang ([https://commons.apache.org/proper/commons-lang/](https://commons.apache.org/proper/commons-lang/)) qui fournit une extension de la librairie Java standard.
-
-# Tâches à réaliser
-
-Vous trouverez çi-dessous le diagramme UML du projet, ainsi que toutes les tâches à réaliser.
-Par soucis de simplicité, les méthodes getters et setter ont été ignorées.
-
-![UML projet](uml.png)
-
-## Tâche 1 : Contraintes du modèle
-
-Le code donnée au démarrage du projet ne vérifie aucune des contraintes indiquée dans le modèle UML (contraintes d'unicité, cardinalité et intégrité des associations, handshake, etc).
-
-Votre première tâche est d'implémenter toutes ces contraintes. Pour ce faire, nous vous proposons le protocole de travail suivant:
-
-1. Identifier toutes les contraintes du modèle (sur les attributs, les associations, etc). Essayer de les réduire le plus possible, pour arriver à un ensemble de contraintes dites "atomiques". Un bon exemple est "Un calendrier ne peut appartenir qu'à une seule personne".
-
-2. Pour chaque contrainte atomique, ouvrez une "issue" (ou "ticket" en français) correspondante, qui décrit la contrainte à vérifier et les classes concernées.
-
-3. Pour chaque contrainte, implémenter le nécessaire pour la vérifier, puis faites un commit qui référence l'issue associée.
-
-## Tâche 2 : Tests du modèle
-
-Comme précédemment, le code fourni au démarrage présente un autre défaut: il ne contient aucun test unitaire ! Votre tâche suivante est **d'implémenter une suite de tests pour valider l'implémentation du modèle**. En d'autres termes, *il vous faut tester tout le code produit pour la tâche précédente* ;-)
-
-Pour ce faire, nous vous proposons le protocole de travail suivant:
-
-1. Identifier des cas de tests pour valider le comportement de chaque méthode du projet. Vous penserez notamment à valider que toutes les containtes identifiées précédemment sont correctement vérifiées.
-
-2. Pour chaque cas de test, ouvrez une isue correspondante, qui décrit ce que le test doit vérifier et le scénario de test associé.
-
-3. Implémenter chaque cas de tests en utilisant la librairie JUnit, puis faites un commit qui référence l'issue associée.
-
-## Tâche 3 : Gestion des utilisateurs
-
-Pour cette tâche, on vous demande d'ajouter une nouvelle fonctionnalité au projet: la gestion des utilisateurs. Pour ce faire, vous devez étendre le modèle UML et le code proposé pour ajouter les fonctionnalités suivantes:
-
-* Gestion d'une liste d'utilisateurs (agent ou administrateur) avec support pour l'ajout et la suppression d'utilisateurs.
-* Gestion de l'identification des utilisateurs: chaque utilisateur doit pouvoir se connecter avec un mot de passe, dont la vérification sera géré par le logiciel.
-
-Là encore, vous pourrez suivre un protcole basé sur un cycle "ouverture d'issue/implémentation/commit".
-
-## Tâche 4 : Interface graphique
-
-La dernière étape du projet consiste à implémenter une interface graphique pour pouvoir utiliser le logiciel. Pour ce faire, vous utiliserez la librairie JavaFx, présente dans le JDK Java par défaut. Un code de démarrage vous est fourni dans la classe `GUI` (package `fr.unantes.software.construction.ui`).
-
-Vous n'êtes pas obligé de réaliser une **belle** interface, tant qu'elle respecte les consignes et qu'elle est facilement utilisable.
-
-Les fonctionnalités minimales à implémenter sont les suivantes:
-1. Gestion de la connexion/déconnexion de l'utilisateur.
-
-2. Enregistrement d'un nouvel utilisateur (avec mot de passe).
-
-3. Réservation/annulation d'un voyage (avec ou sans correspondances) par un agent.
-
-4. Réservation/annluation d'un voyage (avec ou sans correspondances) par un administrateur pour le compte d'un agent.
-
-5. Ajout de nouvelles destinations pour les voyages.
-
-## Tâche bonus : Persistence des données
-
-**Attention: la tâche suivante est optionelle et ne doit être considéré qu'une fois les autres tâches terminées.**
-
-Pour les hackers fous, vous pouvez également essayer d'implémenter un stockage persitant des informations du logiciel. En l'état, toutes les données sont perdues à la fermeture de la fenête. Vous pouvez travailler à mettre en oeuvre une solution pour que les données soient conservées d'une session sur l'autre.
-
-Quelques pistes:
-* La librairie Java standard supporte la serialization/deserialization d'objets sur le disque. Plus d'informations: https://www.tutorialspoint.com/java/java_serialization.htm
-* La librairie `SQLite` permet de gérer une base données SQL stockée dans un simple fichier. Plus d'informations: http://www.sqlitetutorial.net/sqlite-java/
