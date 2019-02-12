@@ -38,7 +38,7 @@ Pour chaque ticket du fichier [`ISSUES.md`](https://gitlab.univ-nantes.fr/naomod
 
 4. Si jamais vous devez changer d'approche au niveau des tests, de l'implémentation, etc, **ajouter un commentaire sur le ticket Gitlab**  pour commenter tout changement. **N'éditez pas le texte du ticket original**, afin de garder un historique de votre travail.
 
-5. Effectuer un commit de vos modifications, en référençant le numéro du ticket et en indiquant votre progression dans sa résolution. Nous vous invitons à lire le billet suivant à ce sujet: [https://chris.beams.io/posts/git-commit/][https://chris.beams.io/posts/git-commit/].
+5. Effectuer un commit de vos modifications, en référençant le numéro du ticket et en indiquant votre progression dans sa résolution. Nous vous invitons à lire le billet suivant à ce sujet: [https://chris.beams.io/posts/git-commit/](https://chris.beams.io/posts/git-commit/).
 
 6. Enfin, quand le ticket est résolu, marquer le comme "résolu" dans l'interface de Gitlab.
 
