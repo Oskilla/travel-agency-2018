@@ -1,6 +1,6 @@
 package fr.unantes.software.construction.calendar;
 
-import fr.unantes.software.construction.people.Agent;
+import fr.unantes.software.construction.people.Person;
 
 import java.util.Vector;
 
@@ -9,18 +9,18 @@ import java.util.Vector;
  */
 public class Calendar {
     private Vector travels;
-    private Agent owner;
+    private Person owner;
 
-    public Calendar(Agent owner) {
+    public Calendar(Person owner) {
         this.owner = owner;
         travels = new Vector();
     }
 
-    public Agent getOwner() {
+    public Person getOwner() {
         return owner;
     }
 
-    public void setOwner(Agent owner) {
+    public void setOwner(Person owner) {
         this.owner = owner;
     }
 

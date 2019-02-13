@@ -15,11 +15,9 @@ Pour ce faire, cliquez sur l'icône "Fork" (ou "Créer une divergence" en franç
 
 2. Clonez **votre fork du projet** (et non pas celui d'origine). Toutes vos modifications devront être poussées sur votre fork et toutes les issues (ou "tickets" en français) ouvertes le seront sur votre version du projet.
 
-3. **Il ne doit y avoir qu'un seul "fork" par groupe d'étudiants.** Il sera utilisé comme espace de rendu des fichiers lié au projet.
+3. Ajouter tous les autres membres du groupe à votre fork.
 
-4. Avant toute modification, vous devez créer un "problème" (**Issue**) sur votre projet. Cette issue décrira la fonctionnalité que vous souhaitez ajouter. Et après la modification, vous devez faire une validation (Commit) en référence à ce problème.
-
-5. Le cycle de travail sera donc le suivant: Analyse -> Création d'une issue sur votre projet Gitlab -> Modification des sources -> Validation.
+4. **Il ne doit y avoir qu'un seul "fork" par groupe d'étudiants.** Il sera utilisé comme espace de rendu des fichiers lié au projet.
 
 # Travail à réaliser
 
@@ -31,16 +29,18 @@ Pour chaque ticket du fichier [`ISSUES.md`](https://gitlab.univ-nantes.fr/naomod
   * Un bref résumé du problème lié au ticket.
   * Quels sont les tests à mettre en oeuvre pour vérifier que le ticket a bien été résolu ?
   * Comment la solution au ticket doit être mise en oeuvre ?
+ 
+2. **Associer un membre du groupe** à la résolution du ticket, via l'interface de Gitlab. Cette personne, et uniquement celle ci, sera chargée de résoudre le ticket.
 
-2. Créer la/les classes de tests et les tests unitaires qui permetteront de valider la résolution du ticket. Pour le nommage de vos tests, vous pouvez vous référer à la ressource suivante: [https://dzone.com/articles/7-popular-unit-test-naming](https://dzone.com/articles/7-popular-unit-test-naming).
+3. Créer la/les classes de tests et les tests unitaires qui permetteront de valider la résolution du ticket. Pour le nommage de vos tests, vous pouvez vous référer à la ressource suivante: [https://dzone.com/articles/7-popular-unit-test-naming](https://dzone.com/articles/7-popular-unit-test-naming).
 
-3. Implémenter de quoi résoudre le ticket. Les tests écrits précédemment devront valider votre implémentation. *Faites attention à la regression!*: toute modification ne doit pas "casser" du code fonctionnel.
+4. Implémenter de quoi résoudre le ticket. Les tests écrits précédemment devront valider votre implémentation. *Faites attention à la regression!*: toute modification ne doit pas "casser" du code fonctionnel.
 
-4. Si jamais vous devez changer d'approche au niveau des tests, de l'implémentation, etc, **ajouter un commentaire sur le ticket Gitlab**  pour commenter tout changement. **N'éditez pas le texte du ticket original**, afin de garder un historique de votre travail.
+5. Si jamais vous devez changer d'approche au niveau des tests, de l'implémentation, etc, **ajouter un commentaire sur le ticket Gitlab**  pour commenter tout changement. **N'éditez pas le texte du ticket original**, afin de garder un historique de votre travail.
 
-5. Effectuer un commit de vos modifications, en référençant le numéro du ticket et en indiquant votre progression dans sa résolution. Nous vous invitons à lire le billet suivant à ce sujet: [https://chris.beams.io/posts/git-commit/](https://chris.beams.io/posts/git-commit/).
+6. Effectuer un commit de vos modifications, en référençant le numéro du ticket et en indiquant votre progression dans sa résolution. Nous vous invitons à lire le billet suivant à ce sujet: [https://chris.beams.io/posts/git-commit/](https://chris.beams.io/posts/git-commit/).
 
-6. Enfin, quand le ticket est résolu, marquer le comme "résolu" dans l'interface de Gitlab.
+7. Enfin, quand le ticket est résolu, marquer le comme "résolu" dans l'interface de Gitlab.
 
 Le code du projet est là pour vous fournir une base de code. Vous êtes libre de *modifier l'implémentation comme vous l'entendez*, voir même de modifier le modèle UML en lui même !  **Mais attention, vous devrez motiver tous vos changements dans vos différents tickets/commits !!!**
 

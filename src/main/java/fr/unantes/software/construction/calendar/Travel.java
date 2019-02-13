@@ -6,7 +6,6 @@ import java.util.Vector;
  * A Travel goes from one place to another, with a departure date and an arrival date
  */
 public class Travel {
-
     private Vector steps;
     private Calendar parent;
 
