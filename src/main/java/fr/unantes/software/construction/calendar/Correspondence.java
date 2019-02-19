@@ -1,17 +1,15 @@
 package fr.unantes.software.construction.calendar;
 
-import org.joda.time.DateTime;
-
 import java.util.Objects;
 
 public class Correspondence {
     private Travel travel;
     private City startCity;
     private City destinationCity;
-    private DateTime startTime;
-    private DateTime arrivalTime;
+    private int startTime;
+    private int arrivalTime;
 
-    public Correspondence(Travel travel, City startCity, City destinationCity, DateTime startTime, DateTime arrivalTime) {
+    public Correspondence(Travel travel, City startCity, City destinationCity, int startTime, int arrivalTime) {
         this.travel = travel;
         this.startCity = startCity;
         this.destinationCity = destinationCity;
@@ -43,19 +41,19 @@ public class Correspondence {
         this.destinationCity = destinationCity;
     }
 
-    public DateTime getStartTime() {
+    public int getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(DateTime startTime) {
+    public void setStartTime(int startTime) {
         this.startTime = startTime;
     }
 
-    public DateTime getArrivalTime() {
+    public int getArrivalTime() {
         return arrivalTime;
     }
 
-    public void setArrivalTime(DateTime arrivalTime) {
+    public void setArrivalTime(int arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
 
@@ -66,8 +64,8 @@ public class Correspondence {
         Correspondence that = (Correspondence) o;
         return getStartCity().equals(that.getStartCity()) &&
                 getDestinationCity().equals(that.getDestinationCity()) &&
-                getStartTime().equals(that.getStartTime()) &&
-                getArrivalTime().equals(that.getArrivalTime());
+                getStartTime() == that.getStartTime() &&
+                getArrivalTime() == that.getArrivalTime();
     }
 
     @Override
