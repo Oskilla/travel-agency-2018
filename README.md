@@ -10,7 +10,7 @@ Ce projet  sera réalisé par groupe de 3 étudiants.
 Vous allez suivre le processus de maintenance vu en cours.
 Pour rappel:
 
-<img src="https://sunye-g.univ-nantes.io/sce/resources/png/maintenance-process.pngt" alt="Software Maintenance Process" style="width: 200px;"/>
+<img src="https://sunye-g.univ-nantes.io/sce/resources/png/maintenance-process.png" alt="Software Maintenance Process" style="width: 200px;"/>
 
 Commencez par préparer l'environnement de votre projet:
 
