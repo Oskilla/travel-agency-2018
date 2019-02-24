@@ -94,6 +94,4 @@ Le projet de démarrage est configuré comme un projet Maven standard. Vous ête
 
 - JUnit ([https://junit.org/junit5/](https://junit.org/junit5/)) pour gérer les tests.
 
-- Joda Time ([https://www.joda.org/joda-time/](https://www.joda.org/joda-time/) pour manipuler des dates.
-
 - Apache Commons Lang ([https://commons.apache.org/proper/commons-lang/](https://commons.apache.org/proper/commons-lang/)) qui fournit une extension de la librairie Java standard.
