@@ -21,11 +21,15 @@ Pour ce faire, cliquez sur l'icône "Fork" (ou "Créer une divergence" en franç
 
 3. Créez des étiquettes pour organiser les tickets du projet: _bug_, _improvement_, _smell_, _performance_, etc.
 
-4. Chaque membre du groupe doit cloner **votre fork du projet** (et non pas celui d'origine). 
+4. Chaque membre du groupe doit cloner **votre fork du projet** (et non pas celui d'origine).
 Toutes vos modifications devront être poussées sur votre _fork_ et toutes les issues (ou "tickets" en français) ouvertes le seront sur votre version du projet.
 
 5. **Il ne doit y avoir qu'un seul "fork" par groupe d'étudiants.** Il sera utilisé comme espace de rendu des fichiers lié au projet.
 
+
+## UML du logiciel
+
+![Travel-agency UML](uml.png)
 
 ## Travail à réaliser
 
@@ -38,10 +42,10 @@ Pour chaque ticket du fichier [`ISSUES.md`](https://gitlab.univ-nantes.fr/naomod
   - Un bref résumé du problème lié au ticket.
   - Quels sont les tests à mettre en oeuvre pour vérifier que le ticket a bien été résolu ?
   - Comment la solution au ticket doit être mise en oeuvre ?
- 
+
 2. **Associer un membre du groupe** à la résolution du ticket, via l'interface de GitLab. Cette personne, et uniquement celle-ci, sera chargée de résoudre le ticket.
 
-3. Créer les tests unitaires qui permettront de vérifier d'abord qu'il s'agit bien d'un problème et ensuite de la résolution du ticket. 
+3. Créer les tests unitaires qui permettront de vérifier d'abord qu'il s'agit bien d'un problème et ensuite de la résolution du ticket.
 Pour le nommage de vos tests, vous pouvez vous référer à la ressource suivante: [https://dzone.com/articles/7-popular-unit-test-naming](https://dzone.com/articles/7-popular-unit-test-naming).
 
 4. Implémenter le code qui résout le ticket. Les tests écrits précédemment devront valider votre implémentation. *Faites attention à la régression!*: toute modification ne doit pas "casser" du code qui marchait auparavant (les autres tests unitaires doivent passer).
@@ -71,9 +75,9 @@ Le code du projet est là pour vous fournir une base de code. Vous êtes libre d
   - Qualité et pertinence des tests unitaires mis en place.
   - Approche choisie pour résoudre chaque ticket.
   - Qualité des messages de commits.
-  
+
 **Ne sacrifiez pas la qualité à la quantité!** Il vaut mieux rendre un projet bien réalisé avec des tickets non résolus qu'un projet avec tous les tickets mal résolus.
-  
+
 ## Détecter les erreurs de code avec IntelliJ et Sonarlint
 
 L'éditeur IntelliJ propose un plugin appelé [Sonarlint](https://www.sonarlint.org/), capable de détecter les code smells dans vos projets.
@@ -82,7 +86,7 @@ Nous vous recommandons de l'installer et de l'utiliser dans le cadre de ce proje
 Pour l'installer, vous avez deux options:
 
 1. Aller dans le menu "Préférences" de IntelliJ -> Section "Plugins", chercher "Sonarlint" puis cliquer sur "Installer".
-2. Installer le manuellement : [https://plugins.jetbrains.com/plugin/7973-sonarlint](https://plugins.jetbrains.com/plugin/7973-sonarlint) 
+2. Installer le manuellement : [https://plugins.jetbrains.com/plugin/7973-sonarlint](https://plugins.jetbrains.com/plugin/7973-sonarlint)
 
 ## Dépendances Maven
 
