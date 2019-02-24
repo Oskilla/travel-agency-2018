@@ -3,6 +3,8 @@
 # Compiled class file
 *.class
 
+target/
+
 # Log file
 *.log
 
@@ -25,4 +27,3 @@
 hs_err_pid*
 .idea
 travelagency.iml
-
