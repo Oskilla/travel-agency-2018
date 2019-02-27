@@ -14,8 +14,8 @@ Pour rappel:
 
 Commencez par préparer l'environnement de votre projet:
 
-1. Avant toutes choses, un membre du groupe doit créez un **"Fork"** du projet sur le serveur.
-Pour ce faire, cliquez sur l'icône "Fork" (ou "Créer une divergence" en français) de la page du projet our accéder au lien suivant: [https://gitlab.univ-nantes.fr/naomod/software-construction-course/alma-gtd/forks/new](https://gitlab.univ-nantes.fr/naomod/software-construction-course/alma-gtd/forks/new)
+1. Avant toutes choses, un membre du groupe doit créer un **"Fork"** du projet sur le serveur.
+Pour ce faire, cliquez sur l'icône "Fork" (ou "Créer une divergence" en français) de la page du projet pour accéder au lien suivant: [https://gitlab.univ-nantes.fr/naomod/software-construction-course/alma-gtd/forks/new](https://gitlab.univ-nantes.fr/naomod/software-construction-course/alma-gtd/forks/new)
 
 2. Ajouter tous les autres membres du groupe à votre fork.
 
@@ -54,14 +54,14 @@ Pour le nommage de vos tests, vous pouvez vous référer à la ressource suivant
 
 6. Effectuer un (ou plusieurs) commit(s) pour pousser vos modifications sur le dépôt, en référençant le numéro du ticket et en indiquant votre progression dans sa résolution. Nous vous invitons à lire le billet suivant à ce sujet: [https://chris.beams.io/posts/git-commit/](https://chris.beams.io/posts/git-commit/).
 
-7. Enfin, quand le ticket est résolu, marquer le comme "résolu" dans l'interface de Gitlab.
+7. Enfin, quand le ticket est résolu, marquez-le comme "résolu" dans l'interface de Gitlab.
 Vous pouvez aussi fermer les tickets automatiquement à l'intérieur d'un message de commit: [Automatic issue closing](https://docs.gitlab.com/ee/user/project/issues/automatic_issue_closing.html)
 
-Le code du projet est là pour vous fournir une base de code. Vous êtes libre de *modifier l'implémentation comme vous l'entendez*, voir même de modifier le modèle UML en lui même !  **Mais attention, vous devrez motiver tous vos changements dans vos différents tickets/commits !!!**
+Le code du projet est là pour vous fournir une base de code. Vous êtes libre de *modifier l'implémentation comme vous l'entendez*, voire même de modifier le modèle UML en lui même !  **Mais attention, vous devrez motiver tous vos changements dans vos différents tickets/commits !!!**
 
 ## Evaluation
 
-- Le travail à rendre se composera de votre **fork en ligne Gitalb**, sur lequel vous aurez pousser toutes vos modifications. Cela inclut également tous les messages de commits et tickets ouverts.
+- Le travail à rendre se composera de votre **fork en ligne Gitalb**, sur lequel vous aurez poussé toutes vos modifications. Cela inclut également tous les messages de commits et tickets ouverts.
 
 - Si vous le souhaitez, vous pouvez ajouter un fichier "`RENDU.md`" à la racine du projet, afin de décrire les spécificités de votre projet (choix techniques, parties non traitées, extensions non demandées, etc.).
 
