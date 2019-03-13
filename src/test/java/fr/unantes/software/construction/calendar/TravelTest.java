@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.InvalidClassException;
+import java.util.Date;
 
 public class TravelTest {
     private Travel trav1;
@@ -18,9 +19,13 @@ public class TravelTest {
     private City cit2 = new City ("country2", "cname2");
     private City cit3 = new City ("country1","cname3");
     private City cit4 = new City ("country3", "cname4");
-    private Correspondence cor1 = new Correspondence(trav1,cit1,cit2,1,2 );
-    private Correspondence cor2 = new Correspondence(trav1,cit2,cit3, 3,5);
-    private Correspondence cor3 = new Correspondence(trav1, cit3, cit4, 5,9);
+    private Date date1 = new Date(1995,12,1);
+    private Date date2 = new Date(2005,12,1);
+    private Date date3 = new Date(2015,12,1);
+    private Date date4 = new Date(2025,12,1);
+    private Correspondence cor1 = new Correspondence(trav1,cit1,cit2,date1,date2);
+    private Correspondence cor2 = new Correspondence(trav1,cit2,cit3, date2,date3);
+    private Correspondence cor3 = new Correspondence(trav1, cit3, cit4, date3,date4);
     public TravelTest() throws InvalidClassException {}
 
     @BeforeEach
