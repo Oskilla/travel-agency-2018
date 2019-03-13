@@ -1,15 +1,16 @@
 package fr.unantes.software.construction.calendar;
 
 import java.util.Objects;
+import java.util.*; //Importation des packages
 
 public class Correspondence {
     private Travel travel;
     private City startCity;
     private City destinationCity;
-    private int startTime;
-    private int arrivalTime;
+    private Date startTime; //Changement du type
+    private Date arrivalTime; //Changement du type
 
-    public Correspondence(Travel travel, City startCity, City destinationCity, int startTime, int arrivalTime) {
+    public Correspondence(Travel travel, City startCity, City destinationCity, Date startTime, Date arrivalTime) {
         this.travel = travel;
         this.startCity = startCity;
         this.destinationCity = destinationCity;
@@ -41,19 +42,19 @@ public class Correspondence {
         this.destinationCity = destinationCity;
     }
 
-    public int getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(int startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
-    }
+    } //Changement du type de retour et du paramètre
 
-    public int getArrivalTime() {
+    public Date getArrivalTime() {
         return arrivalTime;
-    }
+    } //Changement du type de retour et du paramètre
 
-    public void setArrivalTime(int arrivalTime) {
+    public void setArrivalTime(Date arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
 

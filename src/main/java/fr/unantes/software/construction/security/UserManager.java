@@ -6,12 +6,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserManager {
+
     private Map<String, Person> namesToUsers;
-    private Map<String, String> usersToPasswords;
+    GestionMdp mapMdp = new GestionMdp();
+
 
     public UserManager() {
         namesToUsers = new HashMap<>();
-        usersToPasswords = new HashMap<>();
     }
 
     /**
@@ -35,7 +36,7 @@ public class UserManager {
             throw new IllegalArgumentException("Invalid argument: the person is already registered.");
         }
         namesToUsers.put(person.toString(), person);
-        usersToPasswords.put(person.getName(), encryptPassword(password));
+        mapMdp.addMdp(person, password);
         return true;
     }
 
@@ -44,49 +45,13 @@ public class UserManager {
      * @param person - User to remove
      * @return True if everything went smoothly, False otherwise
      */
-    public boolean removeUser(Person person) {
-        if (namesToUsers.containsKey(person.getName())) {
-            Person p = namesToUsers.get(person.getName());
-            usersToPasswords.remove(p.getName());
-            namesToUsers.remove(p.getName());
+    public boolean removeUser(Person personne) {
+        if (namesToUsers.containsKey(personne.getName())) {
+            mapMdp.removeMdp(personne);
+            namesToUsers.remove(personne.getName());
         }
         return true;
     }
 
-    /**
-     * Valid a password
-     * @param person - User associated to the password
-     * @param password - password to validate
-     * @return True if the password is valid, false otherwise
-     */
-    public boolean validatePassword(Person person, String password) {
-        if (namesToUsers.containsKey(person.getName())) {
-            Person p = namesToUsers.get(person.getName());
-            String reference = usersToPasswords.get(p.getName());
-            return decryptPassword(reference).equals(password);
-        }
-        return false;
-    }
 
-    /**
-     * Encrypt a password
-     * @param password - Password to encrypt
-     * @return Encrypted password
-     * @throws IllegalArgumentException
-     */
-    private String encryptPassword(String password) throws IllegalArgumentException {
-        if (password.contains("a")) {
-            throw new IllegalArgumentException("The password contains unsecure characters, cannot perform encryption.");
-        }
-        return password.replaceAll("a", "e");
-    }
-
-    /**
-     * Decrypt a password
-     * @param encrypted - Password to decrypt
-     * @return Decrypted password
-     */
-    private String decryptPassword(String encrypted) {
-        return encrypted.replaceAll("e", "a");
-    }
 }
