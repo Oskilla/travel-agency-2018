@@ -33,11 +33,13 @@ public class UserManager {
      */
     public boolean addUser(Person person, String password) throws IllegalArgumentException {
         if (namesToUsers.containsKey(person.getName())) {
-            throw new IllegalArgumentException("Invalid argument: the person is already registered.");
+            throw new IllegalArgumentException("Invalid argument: the person is already registered.")
         }
-        namesToUsers.put(person.toString(), person);
-        mapMdp.addMdp(person, password);
-        return true;
+        else {
+            namesToUsers.put(person.toString(), person);
+            mapMdp.addMdp(person, password);
+            return true;
+        }
     }
 
     /**
@@ -49,9 +51,8 @@ public class UserManager {
         if (namesToUsers.containsKey(personne.getName())) {
             mapMdp.removeMdp(personne);
             namesToUsers.remove(personne.getName());
-        }
-        return true;
+            return true;
+        } else return false;
+
     }
-
-
 }
