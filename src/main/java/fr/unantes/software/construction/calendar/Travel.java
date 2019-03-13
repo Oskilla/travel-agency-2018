@@ -1,17 +1,22 @@
 package fr.unantes.software.construction.calendar;
 
-import java.util.Vector;
+import com.sun.istack.internal.NotNull;
+
+import java.util.ArrayList;
 
 /**
  * A Travel goes from one place to another, with a departure date and an arrival date
  */
 public class Travel {
-    private Vector steps;
+    @NotNull
+    private ArrayList<Correspondence> steps ;
+    private static final int taillesteps = 10;
+    private static final int taillemin = 1;
     private Calendar parent;
 
     public Travel(Calendar parent) {
         this.parent = parent;
-        steps = new Vector();
+        steps = new ArrayList<>(taillesteps);
     }
 
     public Calendar getParent() {
@@ -30,11 +35,18 @@ public class Travel {
         return (Correspondence) steps.get(steps.size() - 1);
     }
 
-    public boolean addCorrespondence(Correspondence step) {
+    public boolean addCorrespondence(Correspondence step, int index) {
+
+        if (steps.size()==10) {return false;}
+        steps.add(index,step);
+        return true;
+    }
+    public boolean addCorrespondence (Correspondence step){
+        if (steps.size()==taillesteps) {return false;}
         return steps.add(step);
     }
-
     public boolean removeCorrespondence(Correspondence step) {
+        if (steps.size()==taillemin){return false;}
         return steps.remove(step);
     }
 }
