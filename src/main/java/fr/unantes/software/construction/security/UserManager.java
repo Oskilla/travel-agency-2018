@@ -8,11 +8,12 @@ import java.util.Map;
 public class UserManager {
 
     private Map<String, Person> namesToUsers;
-    GestionMdp mapMdp = new GestionMdp();
+    GestionMdp mapMdp;
 
-
+    //Constructeur de la classe
     public UserManager() {
         namesToUsers = new HashMap<>();
+        mapMdp = new GestionMdp();
     }
 
     /**
@@ -33,7 +34,7 @@ public class UserManager {
      */
     public boolean addUser(Person person, String password) throws IllegalArgumentException {
         if (namesToUsers.containsKey(person.getName())) {
-            throw new IllegalArgumentException("Invalid argument: the person is already registered.")
+            throw new IllegalArgumentException("Invalid argument: the person is already registered.");
         }
         else {
             namesToUsers.put(person.toString(), person);
@@ -44,7 +45,7 @@ public class UserManager {
 
     /**
      * Remove a user from the manager
-     * @param person - User to remove
+     * @param personne - User to remove
      * @return True if everything went smoothly, False otherwise
      */
     public boolean removeUser(Person personne) {
