@@ -2,6 +2,7 @@ package fr.unantes.software.construction.security;
 
 import fr.unantes.software.construction.people.Person;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,14 +11,16 @@ public class UserManager {
     private Map<String, Person> namesToUsers;
     GestionMdp mapMdp;
 
+
     //Constructeur de la classe
     public UserManager() {
+
         namesToUsers = new HashMap<>();
         mapMdp = new GestionMdp();
     }
 
     /**
-     * Test if an user is registered in the manager
+     * Test if a user is registered in the manager
      * @param person - User to search for
      * @return True if the user is registered, False otherwise
      */
@@ -32,12 +35,12 @@ public class UserManager {
      * @return True if everything went smoothly, False otherwise
      * @throws IllegalArgumentException
      */
-    public boolean addUser(Person person, String password) throws IllegalArgumentException {
+    public boolean addUser(Person person, String password) throws NoSuchAlgorithmException, IllegalArgumentException {
         if (namesToUsers.containsKey(person.getName())) {
             throw new IllegalArgumentException("Invalid argument: the person is already registered.");
         }
         else {
-            namesToUsers.put(person.toString(), person);
+            namesToUsers.put(person.getName(), person);
             mapMdp.addMdp(person, password);
             return true;
         }

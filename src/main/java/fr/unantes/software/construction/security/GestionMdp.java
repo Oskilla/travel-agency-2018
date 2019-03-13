@@ -3,14 +3,19 @@ package fr.unantes.software.construction.security;
 import fr.unantes.software.construction.people.Person;
 
 import java.util.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 
 public class GestionMdp {
 
     private Map<String, String> usersToPasswords;
+    private Map<String,byte []> usersToSalt;
 
 
     public GestionMdp() {
         usersToPasswords = new HashMap<>();
+        usersToSalt = new HashMap<>();
     }
 
     /**
@@ -19,56 +24,74 @@ public class GestionMdp {
      * @param password - password to validate
      * @return True si le mot de passe est ajouté faux sinon
      */
-    public void addMdp(Person person, String password) {
-
-        usersToPasswords.put(person.getName(), encryptPassword(password));
+    public void addMdp(Person person, String password) throws NoSuchAlgorithmException{
+        byte [] salt = getSalt();
+        usersToSalt.put(person.getName(),salt);
+        usersToPasswords.put(person.getName(), encryptPassword(password,salt));
     }
 
     public void removeMdp(Person person) {
-
         usersToPasswords.remove(person.getName());
+        usersToSalt.remove(person.getName());
     }
 
     public String getMdp(Person personne){
         return usersToPasswords.get(personne.getName());
     }
 
+    
     /**
      * Encrypt a password
      * @param password - Password to encrypt
      * @return Encrypted password
      * @throws IllegalArgumentException
      */
-    private String encryptPassword(String password) throws IllegalArgumentException {
-        if (password.contains("a")) {
-            throw new IllegalArgumentException("The password contains unsecure characters, cannot perform encryption.");
+    public String encryptPassword(String password, byte[] salt) throws IllegalArgumentException
+    {
+        String securePassword = get_SHA_256_SecurePassword(password, salt);
+        return securePassword;
+    }
+
+
+
+    private static String get_SHA_256_SecurePassword(String passwordToHash, byte[] salt)
+    {
+        String generatedPassword = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(salt);
+            byte[] bytes = md.digest(passwordToHash.getBytes());
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i< bytes.length ;i++)
+            {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            generatedPassword = sb.toString();
         }
-        return password.replaceAll("a", "e");
-    }
-
-    /**
-     * Decrypt a password
-     * @param encrypted - Password to decrypt
-     * @return Decrypted password
-     */
-    private String decryptPassword(String encrypted) {
-        return encrypted.replaceAll("e", "a");
+        catch (NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+        }
+        return generatedPassword;
     }
 
 
-    /**
-     * Valid a password
-     * @param person - User associated to the password
-     * @param password - password to validate
-     * @return True if the password is valid, false otherwise
-     */
-/*
-    public boolean validatePassword(Person personne, String password) {
-        if (namesToUsers.containsKey(personne.getName())) {
-            String reference = mapMdp.getMdp(personne);
-            return mapMdp.decryptPassword(reference).equals(password);
+    //Add salt
+    private static byte[] getSalt() throws NoSuchAlgorithmException
+        {
+            SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
+            byte[] salt = new byte[16];
+            sr.nextBytes(salt);
+            return salt;
+        }
+
+        
+
+    public boolean validatePassword(Person person, String password) {
+        if (usersToPasswords.containsKey(person.getName())) {
+            return encryptPassword(password,usersToSalt.get(person.getName())).equals(usersToPasswords.get(person.getName()));
         }
         return false;
     }
-*/
+
 }
