@@ -38,7 +38,7 @@ public class GestionMdpTest {
 
     @Test
     public void testMdpEgaux() throws NoSuchAlgorithmException {
-        Test1.addMdp(p3, "motdepasse");
+        Test1.addMdp(p3, "password");
         assertTrue(Test1.validatePassword(p3,"password"));
     }
 
