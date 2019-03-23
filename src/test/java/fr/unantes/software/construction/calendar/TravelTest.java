@@ -65,11 +65,11 @@ public class TravelTest {
     }
     @Test
     public void testparent(){
-        assertTrue(trav1.getParent().equals(cal1));
-        assertFalse(trav1.getParent().equals(cal2));
+        assertTrue(trav1.getParent().get().equals(cal1));
+        assertFalse(trav1.getParent().get().equals(cal2));
         trav1.setParent(cal2);
-        assertFalse(trav1.getParent().equals(cal1));
-        assertTrue(trav1.getParent().equals(cal2));
+        assertFalse(trav1.getParent().get().equals(cal1));
+        assertTrue(trav1.getParent().get().equals(cal2));
     }
     @Test
     public void testSizemin(){
@@ -86,12 +86,24 @@ public class TravelTest {
         assertFalse(trav1.addCorrespondence(cor1));
 
     }
+    @Test
     public void testSizemax(){
         trav1.addCorrespondence(cor1);
         trav1.addCorrespondence(cor3);
 
         assertTrue(trav1.removeCorrespondence(cor1));
         assertFalse(trav1.removeCorrespondence(cor3));
+    }
+    @Test
+    public void setCalendar(){
+    Calendar cal3 = new Calendar(pers1);
+    Calendar cal4 = new Calendar(pers1);
+    trav1.getParent().set(cal3);
+    assertTrue(cal3.getTravels().contains(trav1));
+    trav1.getParent().set(cal4);
+    assertFalse(cal3.getTravels().contains(trav1));
+    assertTrue(cal4.getTravels().contains(trav1));
+    assertEquals(cal4, trav1.getParent().get());
     }
     @AfterEach
     public void tearDown() throws Exception {

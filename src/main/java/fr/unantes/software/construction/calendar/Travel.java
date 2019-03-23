@@ -12,20 +12,18 @@ public class Travel {
     private ArrayList<Correspondence> steps ;
     private static final int taillesteps = 10;
     private static final int taillemin = 1;
-    private Calendar parent;
+    private SingleRefenrence<Calendar> parent = new SingleBidirectionnalReferenceToTravel(this);
 
     public Travel(Calendar parent) {
-        this.parent = parent;
         steps = new ArrayList<>(taillesteps);
+        setParent(parent);
     }
 
-    public Calendar getParent() {
+    public SingleRefenrence<Calendar> getParent() {
         return parent;
     }
 
-    public void setParent(Calendar parent) {
-        this.parent = parent;
-    }
+    public void setParent(Calendar parent) { this.parent.set(parent); }
 
     public Correspondence getFirstStep() {
         return (Correspondence) steps.get(0);

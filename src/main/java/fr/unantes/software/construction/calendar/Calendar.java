@@ -9,13 +9,12 @@ import java.util.Vector;
  * A Calendar stores a list of travels for an agent
  */
 public class Calendar {
-    private ArrayList<Travel> travels;
-    private static final int tailletravels = 10;
+    private final static  int maxtravels = 10;
+    private MultipleReferences<Travel> travels = new MultipleBidirectionnalReferencesToCalendar(this, maxtravels);
     private Person owner;
 
     public Calendar(Person owner) {
         this.owner = owner;
-        travels = new ArrayList<Travel>(tailletravels);
     }
 
     public Person getOwner() {
@@ -26,12 +25,15 @@ public class Calendar {
         this.owner = owner;
     }
 
-    public boolean addTravel(Travel travel) {
-        if(travels.size()==tailletravels) {return false;}
+    private boolean addTravel(Travel travel) {
         return travels.add(travel);
     }
 
-    public boolean removeTravel(Travel travel) {
+    private boolean removeTravel(Travel travel) {
         return travels.remove(travel);
+    }
+
+    public MultipleReferences<Travel> getTravels() {
+        return travels;
     }
 }

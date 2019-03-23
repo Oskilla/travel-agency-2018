@@ -60,7 +60,7 @@ public class Person {
             throw new InvalidClassException("Invalid operation. Only an administrator can add travel to an agent.");
         }
         try {
-            return agent.getCalendar().addTravel(travel);
+            return agent.getCalendar().getTravels().add(travel);
         } catch (InvalidClassException e) {
             return false;
         }

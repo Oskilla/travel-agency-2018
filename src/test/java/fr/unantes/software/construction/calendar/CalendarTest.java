@@ -21,38 +21,90 @@ public class CalendarTest {
     @Test
     public void insertList(){
         Travel trav1 = new Travel(cal1);
-        assertTrue(cal1.addTravel(trav1));
+        assertTrue(cal1.getTravels().add(trav1));
     }
     @Test
     public void removeList(){
         Travel trav1 = new Travel(cal1);
-        cal1.addTravel(trav1);
-        assertTrue(cal1.removeTravel(trav1));
+        cal1.getTravels().add(trav1);
+        assertTrue(cal1.getTravels().remove(trav1));
     }
     @Test
     public void sizeList(){
+        Travel trav1;
+        Travel trav2;
+        Travel trav3;
+        Travel trav4;
+        Travel trav5;
+        Travel trav6;
+        Travel trav7;
+        Travel trav8;
+        Travel trav9;
+        Travel trav10;
+        Travel trav11;
+        assertTrue(cal1.getTravels().add(trav1 = new Travel(cal1)));
+        assertTrue(cal1.getTravels().add(trav2 = new Travel(cal1)));
+        assertTrue(cal1.getTravels().add(trav3 = new Travel(cal1)));
+        assertTrue(cal1.getTravels().add(trav4 = new Travel(cal1)));
+        assertTrue(cal1.getTravels().add(trav5 = new Travel(cal1)));
+        assertTrue(cal1.getTravels().add(trav6 = new Travel(cal1)));
+        assertTrue(cal1.getTravels().add(trav7 = new Travel(cal1)));
+        assertTrue(cal1.getTravels().add(trav8 = new Travel(cal1)));
+        assertTrue(cal1.getTravels().add(trav9 = new Travel(cal1)));
+        assertTrue(cal1.getTravels().add(trav10 = new Travel(cal1)));
+        assertFalse(cal1.getTravels().add(trav11 = new Travel(cal1)));
+    }
+    @Test
+    public void testBidirectionnalAdd(){
         Travel trav1 = new Travel(cal1);
         Travel trav2 = new Travel(cal1);
         Travel trav3 = new Travel(cal1);
         Travel trav4 = new Travel(cal1);
-        Travel trav5 = new Travel(cal1);
-        Travel trav6 = new Travel(cal1);
-        Travel trav7 = new Travel(cal1);
-        Travel trav8 = new Travel(cal1);
-        Travel trav9 = new Travel(cal1);
-        Travel trav10 = new Travel(cal1);
-        Travel trav11 = new Travel(cal1);
-        assertTrue(cal1.addTravel(trav1));
-        assertTrue(cal1.addTravel(trav2));
-        assertTrue(cal1.addTravel(trav3));
-        assertTrue(cal1.addTravel(trav4));
-        assertTrue(cal1.addTravel(trav5));
-        assertTrue(cal1.addTravel(trav6));
-        assertTrue(cal1.addTravel(trav7));
-        assertTrue(cal1.addTravel(trav8));
-        assertTrue(cal1.addTravel(trav9));
-        assertTrue(cal1.addTravel(trav10));
-        assertFalse(cal1.addTravel(trav11));
+        Travel[] listetrav = {trav1, trav2, trav3, trav4};
+        for (Travel each : listetrav){
+            cal1.getTravels().add(each);
+        }
+        for (Travel each : listetrav)
+        {
+            assertTrue(cal1.getTravels().contains(each));
+            assertEquals(cal1, each.getParent().get());
+        }
+    }
+    @Test
+    public void testRemove(){
+        Travel trav1 = new Travel(cal1);
+        Travel trav2 = new Travel(cal1);
+        Travel trav3 = new Travel(cal1);
+        Travel trav4 = new Travel(cal1);
+        Travel[] listetrav = {trav1, trav2, trav3, trav4};
+        for (Travel each : listetrav){
+            cal1.getTravels().add(each);
+        }
+        assertEquals(listetrav.length, cal1.getTravels().size());
+        for (Travel each : listetrav){
+            cal1.getTravels().remove(each);
+        }
+        assertEquals(0,cal1.getTravels().size());
+    }
+    @Test
+    public  void testCompleteHandShake(){
+        Calendar cal2 = new Calendar(pers1);
+        Travel trav1 = new Travel(cal1);
+        Travel trav2 = new Travel(cal1);
+        Travel trav3 = new Travel(cal1);
+        Travel trav4 = new Travel(cal1);
+        Travel[] listetrav = {trav1, trav2, trav3, trav4};
+        for (Travel each : listetrav){
+            cal1.getTravels().add(each);
+        }
+        for (Travel each : listetrav){
+            cal2.getTravels().add(each);
+        }
+        for (Travel each : listetrav)
+        {
+            assertFalse(cal1.getTravels().contains(each));
+            assertEquals(cal2, each.getParent().get());
+        }
     }
     @AfterEach
     public void tearDown() throws Exception {
