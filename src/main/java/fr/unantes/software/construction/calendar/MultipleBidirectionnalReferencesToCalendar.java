@@ -19,8 +19,6 @@ public class MultipleBidirectionnalReferencesToCalendar implements MultipleRefer
         value.getParent().basicSet(cal);
         this.basicAdd(value);
         return true;
-
-
     }
 
     @Override

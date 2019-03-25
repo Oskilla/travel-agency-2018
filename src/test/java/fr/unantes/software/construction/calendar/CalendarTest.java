@@ -19,17 +19,6 @@ public class CalendarTest {
     @BeforeEach
     public void setUp() throws Exception {cal1 = new Calendar(pers1);}
     @Test
-    public void insertList(){
-        Travel trav1 = new Travel(cal1);
-        assertTrue(cal1.getTravels().add(trav1));
-    }
-    @Test
-    public void removeList(){
-        Travel trav1 = new Travel(cal1);
-        cal1.getTravels().add(trav1);
-        assertTrue(cal1.getTravels().remove(trav1));
-    }
-    @Test
     public void sizeList(){
         Travel trav1;
         Travel trav2;

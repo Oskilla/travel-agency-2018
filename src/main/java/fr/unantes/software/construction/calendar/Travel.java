@@ -9,13 +9,13 @@ import java.util.ArrayList;
  */
 public class Travel {
     @NotNull
-    private ArrayList<Correspondence> steps ;
+    private MultipleBidirectionnalReferencesToTravel steps ;
     private static final int taillesteps = 10;
     private static final int taillemin = 1;
     private SingleRefenrence<Calendar> parent = new SingleBidirectionnalReferenceToTravel(this);
 
     public Travel(Calendar parent) {
-        steps = new ArrayList<>(taillesteps);
+        steps = new MultipleBidirectionnalReferencesToTravel(this, taillesteps, taillemin);
         setParent(parent);
     }
 
@@ -26,24 +26,24 @@ public class Travel {
     public void setParent(Calendar parent) { this.parent.set(parent); }
 
     public Correspondence getFirstStep() {
-        return (Correspondence) steps.get(0);
+        return steps.getFirstStep();
     }
 
     public Correspondence getLastStep() {
-        return (Correspondence) steps.get(steps.size() - 1);
+        return steps.getLastStep();
     }
-
-    public boolean addCorrespondence(Correspondence step, int index) {
+    public MultipleBidirectionnalReferencesToTravel getSteps(){return steps;}
+    private boolean addCorrespondence(Correspondence step, int index) {
 
         if (steps.size()==10) {return false;}
-        steps.add(index,step);
+        steps.add(step);
         return true;
     }
-    public boolean addCorrespondence (Correspondence step){
+    private boolean addCorrespondence (Correspondence step){
         if (steps.size()==taillesteps) {return false;}
         return steps.add(step);
     }
-    public boolean removeCorrespondence(Correspondence step) {
+    private boolean removeCorrespondence(Correspondence step) {
         if (steps.size()==taillemin){return false;}
         return steps.remove(step);
     }
