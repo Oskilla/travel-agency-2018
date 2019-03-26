@@ -25,11 +25,11 @@ public class Calendar {
         this.owner = owner;
     }
 
-    private boolean addTravel(Travel travel) {
+    public boolean addTravel(Travel travel) {
         return travels.add(travel);
     }
 
-    private boolean removeTravel(Travel travel) {
+    public boolean removeTravel(Travel travel) {
         return travels.remove(travel);
     }
 

@@ -33,17 +33,11 @@ public class Travel {
         return steps.getLastStep();
     }
     public MultipleBidirectionnalReferencesToTravel getSteps(){return steps;}
-    private boolean addCorrespondence(Correspondence step, int index) {
-
-        if (steps.size()==10) {return false;}
-        steps.add(step);
-        return true;
-    }
-    private boolean addCorrespondence (Correspondence step){
+    public boolean addCorrespondence (Correspondence step){
         if (steps.size()==taillesteps) {return false;}
         return steps.add(step);
     }
-    private boolean removeCorrespondence(Correspondence step) {
+    public boolean removeCorrespondence(Correspondence step) {
         if (steps.size()==taillemin){return false;}
         return steps.remove(step);
     }
