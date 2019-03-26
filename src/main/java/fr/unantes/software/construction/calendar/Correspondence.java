@@ -11,7 +11,7 @@ public class Correspondence {
     private Date arrivalTime; //Changement du type
 
     public Correspondence(City startCity, City destinationCity, Date startTime, Date arrivalTime) {
-        this.travel = new SingleBidirectionnalReferenceToCorrepondence(this);
+        this.travel = new SingleBidirectionnalReferenceToCorrespondence(this);
         this.startCity = startCity;
         this.destinationCity = destinationCity;
         this.startTime = startTime;
