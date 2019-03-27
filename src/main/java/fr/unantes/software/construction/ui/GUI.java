@@ -1,43 +1,73 @@
 package fr.unantes.software.construction.ui;
 
+import fr.unantes.software.construction.people.Administrateur;
+import fr.unantes.software.construction.people.Agent;
+import fr.unantes.software.construction.people.Person;
+import fr.unantes.software.construction.security.UserManager;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.net.URL;
+
 public class GUI extends Application  {
+
+
+    private final Person solineLecomte;
+    private final Person gaelLode;
+    private final Person yvesmarieCarette;
+    private final UserManager bd;
+
+    public GUI() throws Exception {
+        bd =new UserManager();
+
+        solineLecomte = new Agent("Soline");
+        gaelLode = new Administrateur("Gael");
+        yvesmarieCarette = new Administrateur("YvesMarie");
+
+        bd.addUser(solineLecomte, "mdpsoline");
+        bd.addUser(gaelLode, "mdpgael");
+        bd.addUser(yvesmarieCarette, "mdpyvesmarie");
+    }
+
+
+
+
     @Override
     public void start(Stage stage) throws Exception {
-        GridPane root = new GridPane();
 
-        // name box
-        TextField field1 = new TextField();
-        Label lbl1 = new Label("Name:");
-        lbl1.setLabelFor(field1);
-        Button loginButton = new Button();
-
-        // password box
-        TextField field2 = new TextField();
-        Label lbl2 = new Label("Password:");
-        lbl1.setLabelFor(field2);
+        final URL url2 = getClass().getResource("/views/VueSuperUtilisateur.fxml");
+        final FXMLLoader fxmlLoader2 = new FXMLLoader(url2);
+        fxmlLoader2.setController(login);
+        // Chargement du FXML.
+        final AnchorPane root2 = (AnchorPane) fxmlLoader2.load();
+        Scene scene2 = new Scene(root2, 800, 800);
 
 
-        loginButton.setText("Login");
-        loginButton.setOnAction(event -> {
-            System.out.println("login with name=" + field1.getText() + " and password=" + field2.getText());
-        });
 
-        root.add(lbl1, 0, 0);
-        root.add(field1, 2, 0);
-        root.add(lbl2, 0, 1);
-        root.add(field2, 2, 1);
-        root.add(loginButton, 0, 3);
+        Login login = new Login("L'interface trop bg de YM", bd ,stage, scene2);
 
-        Scene scene = new Scene(root, 280, 200);
+
+        // Localisation du fichier FXML.<
+        final URL url = getClass().getResource("/views/Login.fxml");
+
+        // Création du loader.
+        final FXMLLoader fxmlLoader = new FXMLLoader(url);
+        fxmlLoader.setController(login);
+
+        // Chargement du FXML.
+        final AnchorPane root = (AnchorPane) fxmlLoader.load();
+
+
+
+
+
+        Scene scene = new Scene(root, 800, 800);
         stage.setScene(scene);
         stage.show();
+
+
     }
 }
