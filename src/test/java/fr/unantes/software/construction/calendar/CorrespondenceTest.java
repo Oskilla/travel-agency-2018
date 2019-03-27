@@ -42,6 +42,26 @@ class CorrespondenceTest {
         assertEquals(trav2,cor1.getTravel().get());
     }
     @Test
+    public void setStartCity() {
+        City cit3 = new City("country3","name3");
+        assertTrue(cor1.getStartCity().isSet());
+        assertFalse(cor1.getStartCity().get()==cit3);
+        cor1.setStartCity(cit3);
+        assertFalse(cor1.getStartCity().get()==cit1);
+        assertTrue(cor1.getStartCity().isSet());
+        assertTrue(cor1.getStartCity().get()==cit3);
+    }
+    @Test
+    public void setDestCity() {
+        City cit3 = new City("country3","name3");
+        assertTrue(cor1.getDestinationCity().isSet());
+        assertFalse(cor1.getDestinationCity().get()==cit3);
+        cor1.setDestinationCity(cit3);
+        assertFalse(cor1.getDestinationCity().get()==cit1);
+        assertTrue(cor1.getDestinationCity().isSet());
+        assertTrue(cor1.getDestinationCity().get()==cit3);
+    }
+    @Test
     public void TestUnsetTravel(){
         Travel trav1 = new Travel(cal1);
         cor1.getTravel().set(trav1);
