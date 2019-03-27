@@ -41,13 +41,13 @@ public class GestionMdpTest {
     @Test
     public void testMdpEgaux() throws NoSuchAlgorithmException {
         Test1.addMdp(p3, "password");
-        assertTrue(Test1.validatePassword(p3,"password"));
+        assertTrue(Test1.validatePassword(p3.getName(),"password"));
     }
 
     @Test
     public void testMdpDiff() throws NoSuchAlgorithmException {
         Test1.addMdp(p4, "motdepasse");
-        assertFalse(Test1.validatePassword(p4,"password3"));
+        assertFalse(Test1.validatePassword(p4.getName(),"password3"));
     }
 
 }

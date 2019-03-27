@@ -91,9 +91,9 @@ public class GestionMdp {
 
         
 
-    public boolean validatePassword(Person person, String password) {
-        if (usersToPasswords.containsKey(person.getName())) {
-            return encryptPassword(password,usersToSalt.get(person.getName())).equals(usersToPasswords.get(person.getName()));
+    public boolean validatePassword(String name, String password) {
+        if (usersToPasswords.containsKey(name)) {
+            return encryptPassword(password,usersToSalt.get(name)).equals(usersToPasswords.get(name));
         }
         return false;
     }
