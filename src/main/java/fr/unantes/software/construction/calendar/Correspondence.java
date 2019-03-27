@@ -5,15 +5,15 @@ import java.util.*; //Importation des packages
 
 public class Correspondence {
     private SingleRefenrence<Travel> travel;
-    private City startCity;
-    private City destinationCity;
+    private SingleRefenrence<City> startCity = new SingleReferenceToCity();
+    private SingleRefenrence<City> destinationCity = new SingleReferenceToCity();
     private Date startTime; //Changement du type
     private Date arrivalTime; //Changement du type
 
     public Correspondence(City startCity, City destinationCity, Date startTime, Date arrivalTime) {
         this.travel = new SingleBidirectionnalReferenceToCorrespondence(this);
-        this.startCity = startCity;
-        this.destinationCity = destinationCity;
+        this.startCity.set(startCity);
+        this.destinationCity.set(startCity);
         this.startTime = startTime;
         this.arrivalTime = arrivalTime;
     }
@@ -26,20 +26,20 @@ public class Correspondence {
         this.travel.set(travel);
     }
 
-    public City getStartCity() {
+    public SingleRefenrence getStartCity() {
         return startCity;
     }
 
     public void setStartCity(City startCity) {
-        this.startCity = startCity;
+        this.startCity.set(startCity);
     }
 
-    public City getDestinationCity() {
+    public SingleRefenrence getDestinationCity() {
         return destinationCity;
     }
 
     public void setDestinationCity(City destinationCity) {
-        this.destinationCity = destinationCity;
+        this.destinationCity.set(destinationCity);
     }
 
     public Date getStartTime() {
