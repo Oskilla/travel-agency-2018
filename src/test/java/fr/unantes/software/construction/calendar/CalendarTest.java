@@ -1,6 +1,7 @@
 package fr.unantes.software.construction.calendar;
 
 
+import fr.unantes.software.construction.people.Agent;
 import fr.unantes.software.construction.people.Person;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,7 +12,7 @@ import java.io.InvalidClassException;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalendarTest {
-    private Person pers1 = new Person("nom1","agent");
+    private Agent pers1 = new Agent("nom1");
     private Calendar cal1;
     public CalendarTest() throws InvalidClassException {
     }

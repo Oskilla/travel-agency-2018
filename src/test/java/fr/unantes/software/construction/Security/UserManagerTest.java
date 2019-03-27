@@ -1,4 +1,5 @@
 package fr.unantes.software.construction.Security;
+import fr.unantes.software.construction.people.Agent;
 import fr.unantes.software.construction.people.Person;
 import fr.unantes.software.construction.security.UserManager;
 import org.junit.jupiter.api.*;
@@ -18,14 +19,14 @@ public class UserManagerTest {
 
     @Test
     public void testinsertion() throws InvalidClassException, NoSuchAlgorithmException {
-        Person personne1 = new Person("YM1", "agent");
+        Agent personne1 = new Agent("YM1");
         Test1.addUser(personne1, "motdepasse");
         assertTrue(Test1.hasUser(personne1));
     }
 
     @Test
     public void testremove() throws InvalidClassException, NoSuchAlgorithmException {
-        Person personne2 = new Person("YM2","agent");
+        Agent personne2 = new Agent("YM2");
         Test1.addUser(personne2, "motdepasse");
         Test1.removeUser(personne2);
         assertFalse(Test1.hasUser(personne2));

@@ -1,5 +1,6 @@
 package fr.unantes.software.construction.calendar;
 
+import fr.unantes.software.construction.people.Agent;
 import fr.unantes.software.construction.people.Person;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,8 +16,8 @@ class CorrespondenceTest {
     private City cit2 = new City ("country2", "cname2");
     private Date date1 = new Date(1995,12,1);
     private Date date2 = new Date(2005,12,1);
-    private Person pers1 = new Person("nom1","agent");
-    private Person pers2 = new Person("nom2","agent");
+    private Agent pers1 = new Agent("nom1");
+    private Agent pers2 = new Agent("nom2");
     private Calendar cal1 = new Calendar(pers1);
     private Calendar cal2 = new Calendar (pers2);
     private Correspondence cor1;

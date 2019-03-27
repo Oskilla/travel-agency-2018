@@ -1,5 +1,6 @@
 package fr.unantes.software.construction.calendar;
 
+import fr.unantes.software.construction.people.Agent;
 import fr.unantes.software.construction.people.Person;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,8 +12,8 @@ import java.util.Date;
 
 public class TravelTest {
     private Travel trav1;
-    private Person pers1 = new Person("nom1","agent");
-    private Person pers2 = new Person("nom2","agent");
+    private Agent pers1 = new Agent("nom1");
+    private Agent pers2 = new Agent("nom2");
     private Calendar cal1 = new Calendar(pers1);
     private Calendar cal2 = new Calendar (pers2);
     private City cit1 = new City ("country1","cname1");
