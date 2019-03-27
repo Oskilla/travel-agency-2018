@@ -12,8 +12,11 @@ public class Correspondence {
 
     public Correspondence(City startCity, City destinationCity, Date startTime, Date arrivalTime) {
         this.travel = new SingleBidirectionnalReferenceToCorrespondence(this);
+        if (startCity == null){throw new IllegalArgumentException("start city cannot be null");}
         this.startCity.set(startCity);
-        this.destinationCity.set(startCity);
+        if(destinationCity == null){throw new IllegalArgumentException("destination city cannot be null");}
+        this.destinationCity.set(destinationCity);
+        if(arrivalTime.before(startTime)){throw new IllegalArgumentException("arrival time cannot be before start time");}
         this.startTime = startTime;
         this.arrivalTime = arrivalTime;
     }
@@ -23,6 +26,7 @@ public class Correspondence {
     }
 
     public void setTravel(Travel travel) {
+        if (travel==null){throw new IllegalArgumentException("travel cannot be null");}
         this.travel.set(travel);
     }
 
@@ -31,6 +35,7 @@ public class Correspondence {
     }
 
     public void setStartCity(City startCity) {
+        if (startCity == null){throw new IllegalArgumentException("startCity cannot be null");}
         this.startCity.set(startCity);
     }
 
@@ -39,6 +44,7 @@ public class Correspondence {
     }
 
     public void setDestinationCity(City destinationCity) {
+        if (destinationCity == null){throw new IllegalArgumentException("destinationCity cannot be null");}
         this.destinationCity.set(destinationCity);
     }
 
@@ -55,6 +61,7 @@ public class Correspondence {
     } //Changement du type de retour et du paramètre
 
     public void setArrivalTime(Date arrivalTime) {
+        if (arrivalTime.before(this.startTime)){throw new IllegalArgumentException("arrival cannot be before start");}
         this.arrivalTime = arrivalTime;
     }
 

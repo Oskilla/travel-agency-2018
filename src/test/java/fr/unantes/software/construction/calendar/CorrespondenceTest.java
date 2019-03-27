@@ -77,6 +77,40 @@ class CorrespondenceTest {
         cor1.getTravel().unset();
         assertFalse(cor1.getTravel().isSet());
     }
+
+    @Test
+    public void testStartCityNull(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Correspondence(null, cit2,date1,date2);
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            cor1.setStartCity(null);
+        });
+    }
+    @Test
+    public void testEndCityNull() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Correspondence(cit1, null, date1, date2);
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            cor1.setDestinationCity(null);
+        });
+    }
+    @Test
+    public void testArrivalBeforeStart(){
+        assertThrows(IllegalArgumentException.class, () ->{
+            new Correspondence(cit1,cit2,date2,date1);
+        });
+        Date date3 = new Date(1986,1,1);//est avant date1
+        assertThrows(IllegalArgumentException.class, () -> {
+            cor1.setArrivalTime(date3);
+        });
+    }
+    public void testTravelNull(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            cor1.setTravel(null);
+        });
+    }
     @AfterEach
     void tearDown() {
     }
