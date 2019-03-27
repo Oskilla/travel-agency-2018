@@ -10,6 +10,7 @@ import java.util.Objects;
  * A Generic person, which can be an agent or an administrator
  */
 public class Person {
+
     public String name;
     public String role;
     protected Calendar calendar;
@@ -18,9 +19,10 @@ public class Person {
         if (!role.equals("agent") && !role.equals("admin")) {
             throw new InvalidClassException("Invalid role supplied. A person can only be an agent or an admin");
         }
-        this.name = name;
-        this.role = role;
+            this.name = name;
+            this.role = role;
     }
+
 
     public String getName() {
         return name;
