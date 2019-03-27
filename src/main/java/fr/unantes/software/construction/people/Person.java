@@ -15,7 +15,7 @@ public class Person {
 
 
     public Person(String name) throws InvalidClassException {
-
+        this.name = name;
     }
 
 
