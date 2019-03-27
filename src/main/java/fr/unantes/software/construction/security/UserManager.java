@@ -9,8 +9,7 @@ import java.util.Map;
 public class UserManager {
 
     private Map<String, Person> namesToUsers;
-    GestionMdp mapMdp;
-
+    private GestionMdp mapMdp;
 
     //Constructeur de la classe
     public UserManager() {
@@ -18,6 +17,12 @@ public class UserManager {
         namesToUsers = new HashMap<>();
         mapMdp = new GestionMdp();
     }
+
+
+    public GestionMdp getMapMdp() {
+        return mapMdp;
+    }
+
 
     /**
      * Test if a user is registered in the manager
