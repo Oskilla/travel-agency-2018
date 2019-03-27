@@ -12,7 +12,7 @@ import java.util.Objects;
 public class Administrateur extends Person{
     public String name;
 
-    public Administrateur(String name, String role) throws InvalidClassException {
+    public Administrateur(String name) throws InvalidClassException {
         super(name);
     }
 

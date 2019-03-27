@@ -13,7 +13,7 @@ public class Agent extends Person{
     public String name;
     protected Calendar calendar;
 
-    public Agent(String name, String role) throws InvalidClassException {
+    public Agent(String name) throws InvalidClassException {
         super(name);
         calendar = new Calendar(this);
     }

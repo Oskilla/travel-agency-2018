@@ -1,4 +1,6 @@
 package fr.unantes.software.construction.Security;
+import fr.unantes.software.construction.people.Administrateur;
+import fr.unantes.software.construction.people.Agent;
 import fr.unantes.software.construction.people.Person;
 import fr.unantes.software.construction.security.GestionMdp;
 import fr.unantes.software.construction.security.UserManager;
@@ -13,10 +15,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class GestionMdpTest {
 
     GestionMdp Test1 = new GestionMdp();
-    Person p1 = new Person("Paul", "agent");
-    Person p2 = new Person("Pierre", "admin");
-    Person p3 = new Person("Eliott", "agent");
-    Person p4 = new Person("Simon", "admin");
+    Agent p1 = new Agent("Paul");
+    Administrateur p2 = new Administrateur("Pierre");
+    Agent p3 = new Agent("Eliott");
+    Administrateur p4 = new Administrateur("Simon");
 
 
 
