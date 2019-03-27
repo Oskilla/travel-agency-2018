@@ -10,20 +10,12 @@ import java.util.Objects;
  * A Generic person, which can be an agent or an administrator
  */
 public class Agent extends Person{
-    public String name;
+
     protected Calendar calendar;
 
     public Agent(String name) throws InvalidClassException {
         super(name);
         calendar = new Calendar(this);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Calendar getCalendar() throws InvalidClassException {
