@@ -9,38 +9,30 @@ import java.util.ArrayList;
  */
 public class Travel {
     @NotNull
-    private ArrayList<Correspondence> steps ;
+    private MultipleBidirectionnalReferencesToTravel steps ;
     private static final int taillesteps = 10;
     private static final int taillemin = 1;
-    private Calendar parent;
+    private SingleRefenrence<Calendar> parent = new SingleBidirectionnalReferenceToTravel(this);
 
     public Travel(Calendar parent) {
-        this.parent = parent;
-        steps = new ArrayList<>(taillesteps);
+        steps = new MultipleBidirectionnalReferencesToTravel(this, taillesteps, taillemin);
+        setParent(parent);
     }
 
-    public Calendar getParent() {
+    public SingleRefenrence<Calendar> getParent() {
         return parent;
     }
 
-    public void setParent(Calendar parent) {
-        this.parent = parent;
-    }
+    public void setParent(Calendar parent) { this.parent.set(parent); }
 
     public Correspondence getFirstStep() {
-        return (Correspondence) steps.get(0);
+        return steps.getFirstStep();
     }
 
     public Correspondence getLastStep() {
-        return (Correspondence) steps.get(steps.size() - 1);
+        return steps.getLastStep();
     }
-
-    public boolean addCorrespondence(Correspondence step, int index) {
-
-        if (steps.size()==10) {return false;}
-        steps.add(index,step);
-        return true;
-    }
+    public MultipleBidirectionnalReferencesToTravel getSteps(){return steps;}
     public boolean addCorrespondence (Correspondence step){
         if (steps.size()==taillesteps) {return false;}
         return steps.add(step);

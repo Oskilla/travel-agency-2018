@@ -4,26 +4,26 @@ import java.util.Objects;
 import java.util.*; //Importation des packages
 
 public class Correspondence {
-    private Travel travel;
+    private SingleRefenrence<Travel> travel;
     private City startCity;
     private City destinationCity;
     private Date startTime; //Changement du type
     private Date arrivalTime; //Changement du type
 
-    public Correspondence(Travel travel, City startCity, City destinationCity, Date startTime, Date arrivalTime) {
-        this.travel = travel;
+    public Correspondence(City startCity, City destinationCity, Date startTime, Date arrivalTime) {
+        this.travel = new SingleBidirectionnalReferenceToCorrespondence(this);
         this.startCity = startCity;
         this.destinationCity = destinationCity;
         this.startTime = startTime;
         this.arrivalTime = arrivalTime;
     }
 
-    public Travel getTravel() {
+    public SingleRefenrence<Travel> getTravel() {
         return travel;
     }
 
     public void setTravel(Travel travel) {
-        this.travel = travel;
+        this.travel.set(travel);
     }
 
     public City getStartCity() {

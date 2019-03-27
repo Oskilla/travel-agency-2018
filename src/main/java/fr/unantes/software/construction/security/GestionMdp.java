@@ -35,6 +35,10 @@ public class GestionMdp {
         usersToSalt.remove(person.getName());
     }
 
+    public boolean hasUser(Person person) {
+        return usersToPasswords.containsKey(person.getName())&&usersToSalt.containsKey(person.getName());
+    }
+
     public String getMdp(Person personne){
         return usersToPasswords.get(personne.getName());
     }
