@@ -10,11 +10,14 @@ import java.util.Objects;
  * A Generic person, which can be an agent or an administrator
  */
 public class Person {
+
     public String name;
+
 
     public Person(String name) throws InvalidClassException {
 
     }
+
 
     public String getName() {
         return name;
