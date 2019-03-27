@@ -32,7 +32,7 @@ public class AgentTest {
     }
 
     @Test
-    public void testremoveTravel() throws NoSuchAlgorithmException, InvalidClassException {
+    public void testremoveTravel() throws InvalidClassException {
         Calendar c = new Calendar(p1);
         Travel t = new Travel(c);
         p1.addTravel(t);
