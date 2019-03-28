@@ -3,7 +3,10 @@
 The Travel Agency est un logiciel de gestion de réservation de voyage.
 Dans le cadre de ce projet, vous allez contribuer au développement de ce logiciel.
 
-
+## Auteur
+Yves-Marie CARETTE
+Soline LECOMTE
+Gael LODE
 ## Organisation
 
 Ce projet  sera réalisé par groupe de 3 étudiants.
