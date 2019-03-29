@@ -19,14 +19,17 @@ public class GUI extends Application  {
     private final Person gaelLode;
     private final Person yvesmarieCarette;
     private final UserManager bd;
+    private final Person dieu;
 
     public GUI() throws Exception {
         bd =new UserManager();
 
+        dieu = new Person("dieu");
         solineLecomte = new Agent("Soline");
         gaelLode = new Administrateur("Gael");
-        yvesmarieCarette = new Administrateur("YvesMarie");
+        yvesmarieCarette = new Administrateur("Yves-Marie");
 
+        bd.addUser(dieu,"mdpdieu");
         bd.addUser(solineLecomte, "mdpsoline");
         bd.addUser(gaelLode, "mdpgael");
         bd.addUser(yvesmarieCarette, "mdpyvesmarie");
@@ -38,30 +41,21 @@ public class GUI extends Application  {
     @Override
     public void start(Stage stage) throws Exception {
 
-        final URL url2 = getClass().getResource("/views/VueSuperUtilisateur.fxml");
-        final FXMLLoader fxmlLoader2 = new FXMLLoader(url2);
-        fxmlLoader2.setController(login);
-        // Chargement du FXML.
-        final AnchorPane root2 = (AnchorPane) fxmlLoader2.load();
-        Scene scene2 = new Scene(root2, 800, 800);
 
-
-
-        Login login = new Login("L'interface trop bg de YM", bd ,stage, scene2);
-
+        //construction du controleur du login
+        Login login = new Login("L'interface trop bg de YM", bd, stage);
 
         // Localisation du fichier FXML.<
         final URL url = getClass().getResource("/views/Login.fxml");
 
         // Création du loader.
         final FXMLLoader fxmlLoader = new FXMLLoader(url);
+
+        //Affection du controleur
         fxmlLoader.setController(login);
 
         // Chargement du FXML.
         final AnchorPane root = (AnchorPane) fxmlLoader.load();
-
-
-
 
 
         Scene scene = new Scene(root, 800, 800);
