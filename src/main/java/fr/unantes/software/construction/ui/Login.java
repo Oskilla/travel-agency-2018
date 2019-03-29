@@ -70,7 +70,7 @@ public class Login {
 
 
                 } else if ((bd.getNamesToUsers().get(idutilisateur.getText())) instanceof Administrateur) {
-                    System.out.println("Connexion avec un utilisateur");
+                    System.out.println("Connexion avec un administrateur");
 
                 } else  if ((bd.getNamesToUsers().get(idutilisateur.getText())) instanceof Person ) {
 
