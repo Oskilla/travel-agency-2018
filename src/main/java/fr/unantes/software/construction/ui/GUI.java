@@ -41,7 +41,6 @@ public class GUI extends Application  {
     @Override
     public void start(Stage stage) throws Exception {
 
-
         //construction du controleur du login
         Login login = new Login("L'interface trop bg de YM", bd, stage);
 

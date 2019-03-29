@@ -19,7 +19,7 @@ class CorrespondenceTest {
     private Agent pers1 = new Agent("nom1");
     private Agent pers2 = new Agent("nom2");
     private Calendar cal1 = new Calendar(pers1);
-    private Calendar cal2 = new Calendar (pers2);
+    private Calendar cal2 = new Calendar (pers1);
     private Correspondence cor1;
 
     CorrespondenceTest() throws InvalidClassException {
@@ -30,7 +30,7 @@ class CorrespondenceTest {
         cor1 = new Correspondence(cit1,cit2,date1,date2);
     }
     @Test
-    public  void TestSetTravel(){
+    public  void TestSetTravel() throws InvalidClassException {
         Travel trav1 = new Travel(cal1);
         Travel trav2 = new Travel(cal2);
         cor1.getTravel().set(trav1);
@@ -62,7 +62,7 @@ class CorrespondenceTest {
         assertTrue(cor1.getDestinationCity().get()==cit3);
     }
     @Test
-    public void TestUnsetTravel(){
+    public void TestUnsetTravel() throws InvalidClassException {
         Travel trav1 = new Travel(cal1);
         cor1.getTravel().set(trav1);
         assertTrue(cor1.getTravel().get()==trav1);
@@ -70,7 +70,7 @@ class CorrespondenceTest {
         assertTrue(cor1.getTravel().get()==null);
     }
     @Test
-    public void TestIsSet(){
+    public void TestIsSet() throws InvalidClassException {
         Travel trav1 = new Travel(cal1);
         cor1.getTravel().set(trav1);
         assertTrue(cor1.getTravel().isSet());

@@ -10,12 +10,11 @@ import org.junit.jupiter.api.*;
 import java.io.InvalidClassException;
 import java.security.NoSuchAlgorithmException;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class AgentTest {
-
+    private Calendar cal1;
     Agent p1 = new Agent("Paul");
 
 
@@ -28,7 +27,7 @@ public class AgentTest {
         Calendar c = new Calendar(p1);
         Travel t = new Travel(c);
         p1.addTravel(t);
-        assertTrue(p1.getCalendar().getTravels().contains(t));
+        assertTrue(p1.getCalendar().get().getTravels().contains(t));
     }
 
     @Test
@@ -37,8 +36,23 @@ public class AgentTest {
         Travel t = new Travel(c);
         p1.addTravel(t);
         p1.removeTravel(t);
-        assertFalse(p1.getCalendar().getTravels().contains(t));
+        assertFalse(p1.getCalendar().get().getTravels().contains(t));
     }
-
+    @Test
+    public void testSetCalendar(){
+        Calendar cal = new Calendar(p1);
+        p1.setCalendar(cal);
+        assertTrue(p1.getCalendar().isSet());
+        assertEquals(p1.getCalendar().get(), cal);
+    }
+    @Test
+    public void testBidirectionnalSet(){
+        Calendar cal = new Calendar(p1);
+        p1.setCalendar(cal);
+        assertTrue(p1.getCalendar().isSet());
+        assertTrue(cal.getOwner().isSet());
+        assertEquals(p1.getCalendar().get(), cal);
+        assertEquals(cal.getOwner().get(), p1);
+    }
 
 }
