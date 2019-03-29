@@ -80,7 +80,7 @@ public class Login {
 
                     System.out.println("Connexion de Dieu");
                     //construction du controleur de la vue superUtilisateur
-                    VueSuperUtilisateur vueSuperUtilisateurtest = new VueSuperUtilisateur(bd);
+                    ctrlSuperUtilisateur ctrlSuperUtilisateurtest = new ctrlSuperUtilisateur(bd);
 
                     //Localisation du fichier FXML
                     final URL url2 = getClass().getResource("/views/VueSuperUtilisateur.fxml");
@@ -89,7 +89,7 @@ public class Login {
                     final FXMLLoader fxmlLoader2 = new FXMLLoader(url2);
 
                     //Affectation du controleur
-                    fxmlLoader2.setController(vueSuperUtilisateurtest);
+                    fxmlLoader2.setController(ctrlSuperUtilisateurtest);
 
                     // Chargement du FXML.
                     final AnchorPane root2 = (AnchorPane) fxmlLoader2.load();
