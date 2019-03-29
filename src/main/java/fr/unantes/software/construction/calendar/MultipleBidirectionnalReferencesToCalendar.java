@@ -1,6 +1,8 @@
 package fr.unantes.software.construction.calendar;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class MultipleBidirectionnalReferencesToCalendar implements MultipleReferences<Travel> {
@@ -9,6 +11,12 @@ public class MultipleBidirectionnalReferencesToCalendar implements MultipleRefer
     private  Calendar cal;
 
     public MultipleBidirectionnalReferencesToCalendar(Calendar cal, int max){this.cal=cal; this.max = max;}
+
+
+    @Override
+    public Collection<Travel> get() {
+        return Collections.unmodifiableCollection(travs);
+    }
 
     @Override
     public boolean add(Travel value) {
