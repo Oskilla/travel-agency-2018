@@ -47,16 +47,18 @@ public class ctrlAgent {
         this.bd2 = bd2;
         this.nom = nom;
         ArrayList<Agent> listeAgent = bd.getAgents();
-        this.courant =
-                listeAgent.get(listeAgent.indexOf(bd.getNamesToUsers().get(nom)));
+
+        this.courant = listeAgent.get(listeAgent.indexOf(bd.getNamesToUsers().get(nom)));
+
     }
 
 
     public void update() throws InvalidClassException {
         tableTravelUser.setEditable(false);
 
-        Collection<Travel> voyagesUsers =
-                courant.getCalendar().get().getTravels().get();
+
+        Collection<Travel> voyagesUsers = courant.getCalendar().get().getTravels().get();
+
 
 
         System.out.println(voyagesUsers);
@@ -64,29 +66,19 @@ public class ctrlAgent {
 
         for(Travel trav : voyagesUsers){
             City villeArr = (City)trav.getFirstStep().getStartCity().get();
-            City villeDep =
-                    (City)trav.getLastStep().getDestinationCity().get();
-            listeVoyagesUser.add(new
-                    Voyage(villeDep.getName(),villeDep.getCountry(),trav.getFirstStep().getStartTime(),
-                    villeArr.getName(), villeArr.getCountry(),
-                    trav.getLastStep().getArrivalTime()));
+            City villeDep = (City)trav.getLastStep().getDestinationCity().get();
+            listeVoyagesUser.add(new Voyage(villeDep.getName(),villeDep.getCountry(),trav.getFirstStep().getStartTime(), villeArr.getName(), villeArr.getCountry(), trav.getLastStep().getArrivalTime()));
         }
 
 
-        vDep1.setCellValueFactory(new
-                PropertyValueFactory<Voyage,String>("departV"));
-        pDep1.setCellValueFactory(new
-                PropertyValueFactory<Voyage,String>("departP"));
-        hDep1.setCellValueFactory(new
-                PropertyValueFactory<Voyage,Date>("hDep"));
-        vArr1.setCellValueFactory(new
-                PropertyValueFactory<Voyage,String>("arriveeV"));
-        pArr1.setCellValueFactory(new
-                PropertyValueFactory<Voyage,String>("arriveeP"));
-        hArr1.setCellValueFactory(new
-                PropertyValueFactory<Voyage,Date>("hArr"));
-        ObservableList<Voyage> list1 =
-                FXCollections.observableArrayList(listeVoyagesUser);
+        vDep1.setCellValueFactory(new PropertyValueFactory<Voyage,String>("departV"));
+        pDep1.setCellValueFactory(new PropertyValueFactory<Voyage,String>("departP"));
+        hDep1.setCellValueFactory(new PropertyValueFactory<Voyage,Date>("hDep"));
+        vArr1.setCellValueFactory(new PropertyValueFactory<Voyage,String>("arriveeV"));
+        pArr1.setCellValueFactory(new PropertyValueFactory<Voyage,String>("arriveeP"));
+        hArr1.setCellValueFactory(new PropertyValueFactory<Voyage,Date>("hArr"));
+        ObservableList<Voyage> list1 = FXCollections.observableArrayList(listeVoyagesUser);
+
 
         tableTravelUser.setItems(list1);
 
@@ -94,51 +86,40 @@ public class ctrlAgent {
     }
 
 
-    public void afficher2(ActionEvent actionEvent) throws
-            InvalidClassException {
+
+    public void afficher2(ActionEvent actionEvent) throws InvalidClassException {
         tableTravelUser.setEditable(false);
 
         ArrayList<Voyage> listeVoyages = new ArrayList<>();
 
         for(Travel travel : bd2){
             City villeArr = (City)travel.getFirstStep().getStartCity().get();
-            City villeDep =
-                    (City)travel.getLastStep().getDestinationCity().get();
-            listeVoyages.add(new
-                    Voyage(villeDep.getName(),villeDep.getCountry(),travel.getFirstStep().getStartTime(),
-                    villeArr.getName(), villeArr.getCountry(),
-                    travel.getLastStep().getArrivalTime()));
+
+            City villeDep = (City)travel.getLastStep().getDestinationCity().get();
+            listeVoyages.add(new Voyage(villeDep.getName(),villeDep.getCountry(),travel.getFirstStep().getStartTime(), villeArr.getName(), villeArr.getCountry(), travel.getLastStep().getArrivalTime()));
         }
 
-        vDep2.setCellValueFactory(new
-                PropertyValueFactory<Voyage,String>("departV"));
-        pDep2.setCellValueFactory(new
-                PropertyValueFactory<Voyage,String>("departP"));
-        hDep2.setCellValueFactory(new
-                PropertyValueFactory<Voyage,Date>("hDep"));
-        vArr2.setCellValueFactory(new
-                PropertyValueFactory<Voyage,String>("arriveeV"));
-        pArr2.setCellValueFactory(new
-                PropertyValueFactory<Voyage,String>("arriveeP"));
-        hArr2.setCellValueFactory(new
-                PropertyValueFactory<Voyage,Date>("hArr"));
-        ObservableList<Voyage> list2 =
-                FXCollections.observableArrayList(listeVoyages);
+        vDep2.setCellValueFactory(new PropertyValueFactory<Voyage,String>("departV"));
+        pDep2.setCellValueFactory(new PropertyValueFactory<Voyage,String>("departP"));
+        hDep2.setCellValueFactory(new PropertyValueFactory<Voyage,Date>("hDep"));
+        vArr2.setCellValueFactory(new PropertyValueFactory<Voyage,String>("arriveeV"));
+        pArr2.setCellValueFactory(new PropertyValueFactory<Voyage,String>("arriveeP"));
+        hArr2.setCellValueFactory(new PropertyValueFactory<Voyage,Date>("hArr"));
+        ObservableList<Voyage> list2 = FXCollections.observableArrayList(listeVoyages);
         tableTravel.setItems(list2);
 
     }
 
-    public void ajouter(ActionEvent actionEvent) throws
-            InvalidClassException {
-        Voyage voyage =
-                (Voyage)tableTravel.getSelectionModel().getSelectedItem();
+
+    public void ajouter(ActionEvent actionEvent) throws InvalidClassException {
+        Voyage voyage = (Voyage)tableTravel.getSelectionModel().getSelectedItem();
         System.out.println(voyage);
         Travel tmp=null;
         for (Travel t : bd2){
             for (Correspondence c : t.getSteps().get()){
                 City villeArr = (City)t.getFirstStep().getStartCity().get();
-                City villeDep =
-                        (City)t.getLastStep().getDestinationCity().get();
+
+                City villeDep = (City)t.getLastStep().getDestinationCity().get();
                 System.out.println(villeArr.getName());
                 System.out.println(voyage.getArriveeV());
                 System.out.println(villeArr.getCountry());

@@ -1,5 +1,6 @@
 package fr.unantes.software.construction.ui;
 
+import fr.unantes.software.construction.calendar.Travel;
 import fr.unantes.software.construction.people.Administrateur;
 import fr.unantes.software.construction.people.Agent;
 import fr.unantes.software.construction.people.Person;
@@ -13,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.ArrayList;
 
 public class Login {
 
@@ -25,11 +27,13 @@ public class Login {
     private String nom;
     private UserManager bd;
     private Stage stage;
+    private ArrayList<Travel> listeVoyages;
 
-    public Login(String s, UserManager basededonnee, Stage stage) {
+    public Login(String s, UserManager basededonnee, ArrayList<Travel> listeVoyages, Stage stage) {
         this.bd = basededonnee;
         this.nom = s;
         this.stage = stage;
+        this.listeVoyages = listeVoyages;
     }
 
     public void login(ActionEvent actionEvent) throws Exception {
@@ -55,14 +59,14 @@ public class Login {
 
                 if ((bd.getNamesToUsers().get(idutilisateur.getText())) instanceof Agent) {
 
-                    ctrlAgent ctrlA = new ctrlAgent(bd, idutilisateur.getText());
+                    ctrlAgent ctrlA = new ctrlAgent(bd, listeVoyages, idutilisateur.getText());
 
                     final URL url3 = getClass().getResource("/views/Agent.fxml");
                     final FXMLLoader fxmlLoader3 = new FXMLLoader(url3);
                     fxmlLoader3.setController(ctrlA);
                     // Chargement du FXML.
                     final AnchorPane root3 = (AnchorPane) fxmlLoader3.load();
-                    Scene scene3 = new Scene(root3, 800, 800);
+                    Scene scene3 = new Scene(root3, 600, 800);
 
                     stage.setScene(scene3);
 
