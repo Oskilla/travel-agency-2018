@@ -30,7 +30,7 @@ public class AdminTest {
         Calendar c = new Calendar(p1);
         Travel t = new Travel(c);
         p2.addTravelTo(t,p1);
-        assertTrue(p1.getCalendar().getTravels().contains(t));
+        assertTrue(p1.getCalendar().get().getTravels().contains(t));
     }
 
     @Test
@@ -39,7 +39,7 @@ public class AdminTest {
         Travel t = new Travel(c);
         p2.addTravelTo(t,p1);
         p2.removeTravelFrom(t,p1);
-        assertFalse(p1.getCalendar().getTravels().contains(t));
+        assertFalse(p1.getCalendar().get().getTravels().contains(t));
     }
 
 

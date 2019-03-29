@@ -15,7 +15,7 @@ public class TravelTest {
     private Agent pers1 = new Agent("nom1");
     private Agent pers2 = new Agent("nom2");
     private Calendar cal1 = new Calendar(pers1);
-    private Calendar cal2 = new Calendar (pers2);
+    private Calendar cal2 = new Calendar (pers1);
     private City cit1 = new City ("country1","cname1");
     private City cit2 = new City ("country2", "cname2");
     private City cit3 = new City ("country1","cname3");
@@ -59,7 +59,7 @@ public class TravelTest {
         assertEquals(1,trav1.getSteps().size());
     }
     @Test
-    public void TestCompleteHandshakeCorrespondence(){
+    public void TestCompleteHandshakeCorrespondence() throws InvalidClassException {
         Travel trav2 = new Travel(cal2);
         Correspondence cor1 = new Correspondence(cit1,cit2,date1,date2);
         Correspondence cor2 = new Correspondence(cit2,cit3, date2,date3);
@@ -78,7 +78,7 @@ public class TravelTest {
         }
     }
     @Test
-    public void testparent(){
+    public void testparent() throws InvalidClassException {
         assertTrue(trav1.getParent().get().equals(cal1));
         assertFalse(trav1.getParent().get().equals(cal2));
         trav1.setParent(cal2);
@@ -135,8 +135,8 @@ public class TravelTest {
     }
     @Test
     public void setCalendar(){
-    Calendar cal3 = new Calendar(pers1);
-    Calendar cal4 = new Calendar(pers1);
+    Calendar cal3 = new Calendar(pers2);
+    Calendar cal4 = new Calendar(pers2);
     trav1.getParent().set(cal3);
     assertTrue(cal3.getTravels().contains(trav1));
     trav1.getParent().set(cal4);

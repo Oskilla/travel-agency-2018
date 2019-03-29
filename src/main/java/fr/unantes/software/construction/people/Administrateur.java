@@ -15,19 +15,13 @@ public class Administrateur extends Person{
         super(name);
     }
 
-    public boolean addTravelTo(Travel travel, Agent agent) throws InvalidClassException {
-        try {
-            return agent.getCalendar().addTravel(travel);
-        } catch (InvalidClassException e) {
-            return false;
-        }
+    public boolean addTravelTo(Travel travel, Agent agent){
+
+            return agent.getCalendar().get().addTravel(travel);
+
     }
 
     public boolean removeTravelFrom(Travel t, Agent agent){
-        try {
-            return agent.getCalendar().removeTravel(t);
-        } catch (InvalidClassException e) {
-            return false;
-        }
+            return agent.getCalendar().get().removeTravel(t);
     }
 }

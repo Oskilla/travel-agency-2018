@@ -2,6 +2,7 @@ package fr.unantes.software.construction.calendar;
 
 import com.sun.istack.internal.NotNull;
 
+import java.io.InvalidClassException;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +15,7 @@ public class Travel {
     private static final int taillemin = 1;
     private SingleRefenrence<Calendar> parent = new SingleBidirectionnalReferenceToTravel(this);
 
-    public Travel(Calendar parent) {
+    public Travel(Calendar parent) throws InvalidClassException {
         steps = new MultipleBidirectionnalReferencesToTravel(this, taillesteps, taillemin);
         setParent(parent);
     }
@@ -23,7 +24,7 @@ public class Travel {
         return parent;
     }
 
-    public void setParent(Calendar parent) { this.parent.set(parent); }
+    public void setParent(Calendar parent) throws InvalidClassException { this.parent.set(parent); }
 
     public Correspondence getFirstStep() {
         return steps.getFirstStep();
@@ -33,11 +34,11 @@ public class Travel {
         return steps.getLastStep();
     }
     public MultipleBidirectionnalReferencesToTravel getSteps(){return steps;}
-    public boolean addCorrespondence (Correspondence step){
+    public boolean addCorrespondence (Correspondence step) throws InvalidClassException {
         if (steps.size()==taillesteps) {return false;}
         return steps.add(step);
     }
-    public boolean removeCorrespondence(Correspondence step) {
+    public boolean removeCorrespondence(Correspondence step) throws InvalidClassException {
         if (steps.size()==taillemin){return false;}
         return steps.remove(step);
     }

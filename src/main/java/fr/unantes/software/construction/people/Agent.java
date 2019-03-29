@@ -1,6 +1,7 @@
 package fr.unantes.software.construction.people;
 
 import fr.unantes.software.construction.calendar.Calendar;
+import fr.unantes.software.construction.calendar.SingleBidirectionnalReferenceToPerson;
 import fr.unantes.software.construction.calendar.Travel;
 
 import java.io.InvalidClassException;
@@ -11,34 +12,27 @@ import java.util.Objects;
  */
 public class Agent extends Person{
 
-    protected Calendar calendar;
+    protected SingleBidirectionnalReferenceToPerson calendar;
 
     public Agent(String name) throws InvalidClassException {
         super(name);
-        calendar = new Calendar(this);
+        calendar = new SingleBidirectionnalReferenceToPerson(this);
     }
 
-    public Calendar getCalendar() throws InvalidClassException {
+    public SingleBidirectionnalReferenceToPerson getCalendar(){
         return calendar;
     }
 
-    public void setCalendar(Calendar calendar) throws InvalidClassException {
-        this.calendar = calendar;
+    public void setCalendar(Calendar calendar){
+        this.calendar.set(calendar);
     }
 
-    public boolean addTravel(Travel travel) throws InvalidClassException {
-        try {
-            return this.getCalendar().addTravel(travel);
-        } catch (InvalidClassException e) {
-            return false;
-        }
+    public boolean addTravel(Travel travel){
+            return this.getCalendar().get().addTravel(travel);
     }
 
     public boolean removeTravel(Travel t){
-        try {
-            return this.getCalendar().removeTravel(t);
-        } catch (InvalidClassException e) {
-            return false;
-        }
+            return this.getCalendar().get().removeTravel(t);
+
     }
 }

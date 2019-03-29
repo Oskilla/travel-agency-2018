@@ -12,15 +12,16 @@ import java.io.InvalidClassException;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalendarTest {
-    private Agent pers1 = new Agent("nom1");
     private Calendar cal1;
+    private Agent pers1 = new Agent("nom1");
+
     public CalendarTest() throws InvalidClassException {
     }
 
     @BeforeEach
     public void setUp() throws Exception {cal1 = new Calendar(pers1);}
     @Test
-    public void sizeList(){
+    public void sizeList() throws InvalidClassException {
         Travel trav1;
         Travel trav2;
         Travel trav3;
@@ -45,7 +46,7 @@ public class CalendarTest {
         assertFalse(cal1.getTravels().add(trav11 = new Travel(cal1)));
     }
     @Test
-    public void testBidirectionnalAdd(){
+    public void testBidirectionnalAdd() throws InvalidClassException {
         Travel trav1 = new Travel(cal1);
         Travel trav2 = new Travel(cal1);
         Travel trav3 = new Travel(cal1);
@@ -61,7 +62,7 @@ public class CalendarTest {
         }
     }
     @Test
-    public void testRemove(){
+    public void testRemove() throws InvalidClassException {
         Travel trav1 = new Travel(cal1);
         Travel trav2 = new Travel(cal1);
         Travel trav3 = new Travel(cal1);
@@ -77,7 +78,7 @@ public class CalendarTest {
         assertEquals(0,cal1.getTravels().size());
     }
     @Test
-    public  void testCompleteHandShake(){
+    public  void testCompleteHandShake() throws InvalidClassException {
         Calendar cal2 = new Calendar(pers1);
         Travel trav1 = new Travel(cal1);
         Travel trav2 = new Travel(cal1);
@@ -95,6 +96,30 @@ public class CalendarTest {
             assertFalse(cal1.getTravels().contains(each));
             assertEquals(cal2, each.getParent().get());
         }
+    }
+    @Test
+    public void testSetOwner() throws InvalidClassException {
+        Agent agent1 = new Agent("Paul");
+        cal1.setOwner(agent1);
+        assertTrue(cal1.getOwner().isSet());
+        assertEquals(cal1.getOwner().get(), agent1);
+    }
+    @Test
+    public void testBidirectionnalSet() throws InvalidClassException {
+        Agent agent1 = new Agent("Paul");
+        cal1.setOwner(agent1);
+        assertTrue(cal1.getOwner().isSet());
+        assertTrue(agent1.getCalendar().isSet());
+        assertEquals(cal1.getOwner().get(), agent1);
+        assertEquals(agent1.getCalendar().get(), cal1);
+    }
+    @Test
+    public void testUnset() throws InvalidClassException {
+        Agent agent1 = new Agent("Paul");
+        cal1.setOwner(agent1);
+        assertTrue(cal1.getOwner().isSet());
+        assertEquals(cal1.getOwner().get(), agent1);
+        assertTrue(cal1.getOwner().isSet());
     }
     @AfterEach
     public void tearDown() throws Exception {

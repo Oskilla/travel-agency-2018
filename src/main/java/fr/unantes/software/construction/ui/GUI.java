@@ -40,7 +40,7 @@ public class GUI extends Application  {
 
         final URL url2 = getClass().getResource("/views/VueSuperUtilisateur.fxml");
         final FXMLLoader fxmlLoader2 = new FXMLLoader(url2);
-        fxmlLoader2.setController(login);
+        //fxmlLoader2.setController(login);
         // Chargement du FXML.
         final AnchorPane root2 = (AnchorPane) fxmlLoader2.load();
         Scene scene2 = new Scene(root2, 800, 800);
