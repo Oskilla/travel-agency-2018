@@ -18,7 +18,7 @@ import java.util.*;
 
 import javafx.scene.control.TextField;
 
-public class VueSuperUtilisateur {
+public class ctrlSuperUtilisateur {
 
     public TableView<Person> idlistutilisateur;
     public TableColumn<Person, String> idnom;
@@ -32,7 +32,7 @@ public class VueSuperUtilisateur {
     private UserManager bd;
 
     //Contructeur de la classe
-    public VueSuperUtilisateur(UserManager basededonnee) throws Exception {
+    public ctrlSuperUtilisateur(UserManager basededonnee) throws Exception {
         this.bd = basededonnee;
     }
 
