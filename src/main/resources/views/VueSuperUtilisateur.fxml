@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="ajoututilisateur" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="56.0" layoutY="34.0" text="Bienvenue Super Utilisateur !" textAlignment="CENTER">
+         <font>
+            <Font name="Comic Sans MS" size="30.0" />
+         </font></Label>
+      <Label layoutX="23.0" layoutY="113.0" text="Gestion des utilisateurs (ajout, modification et suppression) :" textAlignment="CENTER">
+         <font>
+            <Font name="Comic Sans MS" size="14.0" />
+         </font>
+      </Label>
+      <TableView fx:id="idlistutilisateur" editable="true" layoutX="72.0" layoutY="148.0" prefHeight="207.0" prefWidth="229.0">
+        <columns>
+           <TableColumn fx:id="idnom" prefWidth="228.0" text="Utilisateurs" />
+        </columns>
+      </TableView>
+      <Button layoutX="335.0" layoutY="290.0" mnemonicParsing="false" onAction="#miseajour" text="Mise à jour de la table" />
+      <Button layoutX="335.0" layoutY="329.0" mnemonicParsing="false" onAction="#miseajourclean" prefHeight="26.0" prefWidth="163.0" text="Clean de la table" />
+      <Button layoutX="335.0" layoutY="252.0" mnemonicParsing="false" onAction="#ajoututilisateur" prefHeight="26.0" prefWidth="163.0" text="Ajout d'un utilisateur" />
+      <TextField fx:id="idnouveaunom" layoutX="344.0" layoutY="148.0" promptText="Nom" />
+      <TextField fx:id="idnouveaumdp" layoutX="344.0" layoutY="187.0" promptText="Mot de passe" />
+      </children>
+</AnchorPane>
