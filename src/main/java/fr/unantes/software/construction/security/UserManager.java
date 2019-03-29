@@ -1,8 +1,12 @@
+
 package fr.unantes.software.construction.security;
 
+import fr.unantes.software.construction.people.Administrateur;
+import fr.unantes.software.construction.people.Agent;
 import fr.unantes.software.construction.people.Person;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +14,8 @@ public class UserManager {
 
     private Map<String, Person> namesToUsers;
     private GestionMdp mapMdp;
+
+
 
     //Constructeur de la classe
     public UserManager() {
@@ -21,6 +27,21 @@ public class UserManager {
 
     public GestionMdp getMapMdp() {
         return mapMdp;
+    }
+
+    public Map<String, Person> getNamesToUsers() {
+        return namesToUsers;
+    }
+
+    public ArrayList<Agent> getAgents(){
+        ArrayList<Agent> listeAgent = new ArrayList<>();
+        for(Map.Entry<String, Person> entry : namesToUsers.entrySet()) {
+            Person valeur = entry.getValue();
+            if(valeur instanceof Agent){
+                listeAgent.add((Agent) valeur);
+            }
+        }
+        return listeAgent;
     }
 
 
@@ -40,7 +61,8 @@ public class UserManager {
      * @return True if everything went smoothly, False otherwise
      * @throws IllegalArgumentException
      */
-    public boolean addUser(Person person, String password) throws NoSuchAlgorithmException, IllegalArgumentException {
+    public boolean addUser(Person person, String password) throws
+            NoSuchAlgorithmException, IllegalArgumentException {
         if (namesToUsers.containsKey(person.getName())) {
             throw new IllegalArgumentException("Invalid argument: the person is already registered.");
         }
@@ -65,3 +87,5 @@ public class UserManager {
 
     }
 }
+
+
