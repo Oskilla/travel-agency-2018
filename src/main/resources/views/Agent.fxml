@@ -10,10 +10,12 @@
    <children>
       <TableView fx:id="FCKINGTEST" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="572.0">
          <columns>
-            <TableColumn fx:id="dep" prefWidth="142.0" text="Depart" />
-            <TableColumn fx:id="hDep" prefWidth="75.0" text="HeureDep" />
-            <TableColumn fx:id="arr" prefWidth="75.0" text="Arrivée" />
-            <TableColumn fx:id="hArr" prefWidth="75.0" text="HeureArr" />
+            <TableColumn fx:id="vDep" prefWidth="94.0" text="Ville Depart" />
+            <TableColumn fx:id="pDep" prefWidth="97.0" text="Pays Depart" />
+            <TableColumn fx:id="hDep" prefWidth="97.0" text="Date Depart" />
+            <TableColumn fx:id="vArr" prefWidth="98.0" text="Ville Arrivee" />
+            <TableColumn fx:id="pArr" prefWidth="107.0" text="Pays Arrivee" />
+            <TableColumn fx:id="hArr" prefWidth="78.0" text="Date Arrivee" />
          </columns></TableView>
       <Button fx:id="btnAjout" layoutX="459.0" layoutY="283.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
       <TextField fx:id="test" layoutX="23.0" layoutY="283.0" />
