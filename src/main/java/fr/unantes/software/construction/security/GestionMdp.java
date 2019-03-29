@@ -30,6 +30,10 @@ public class GestionMdp {
         usersToPasswords.put(person.getName(), encryptPassword(password,salt));
     }
 
+    public Map<String, String> getUsersToPasswords() {
+        return usersToPasswords;
+    }
+
     public void removeMdp(Person person) {
         usersToPasswords.remove(person.getName());
         usersToSalt.remove(person.getName());
