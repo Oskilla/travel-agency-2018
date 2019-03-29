@@ -1,6 +1,8 @@
 package fr.unantes.software.construction.ui;
 
 import fr.unantes.software.construction.calendar.City;
+import fr.unantes.software.construction.calendar.Correspondence;
+import fr.unantes.software.construction.calendar.Travel;
 
 
 import java.util.Date;
@@ -69,5 +71,12 @@ public class Voyage {
 
     public void sethArr(Date hArr) {
         this.hArr = hArr;
+    }
+
+    public boolean equalsTravel(Travel t, Correspondence c){
+        City villeArr = (City)t.getFirstStep().getStartCity().get();
+        City villeDep = (City)t.getLastStep().getDestinationCity().get();
+        return villeArr.getName()==this.getArriveeV()&&villeArr.getCountry()==this.getArriveeP()
+                &&villeDep.getName()==this.getDepartV()&&villeDep.getCountry()==this.getDepartP();
     }
 }
