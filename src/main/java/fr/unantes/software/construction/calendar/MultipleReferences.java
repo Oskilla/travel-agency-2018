@@ -1,5 +1,7 @@
 package fr.unantes.software.construction.calendar;
 
+import java.util.Collection;
+
 public interface MultipleReferences<T> {
     boolean add (T value);
 
@@ -12,4 +14,6 @@ public interface MultipleReferences<T> {
     void basicAdd(T value);
 
     void basicRemove(T value);
+
+    Collection<T> get();
 }

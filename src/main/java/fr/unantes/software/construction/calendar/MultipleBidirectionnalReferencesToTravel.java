@@ -1,6 +1,8 @@
 package fr.unantes.software.construction.calendar;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class MultipleBidirectionnalReferencesToTravel implements MultipleReferences<Correspondence> {
@@ -13,6 +15,11 @@ public class MultipleBidirectionnalReferencesToTravel implements MultipleReferen
         this.trav = trav;
         this.max = max;
         this.min = min;
+    }
+
+    @Override
+    public Collection<Correspondence> get() {
+        return Collections.unmodifiableCollection(corr);
     }
 
     @Override
