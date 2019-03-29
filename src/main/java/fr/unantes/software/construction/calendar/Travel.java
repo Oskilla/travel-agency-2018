@@ -20,6 +20,11 @@ public class Travel {
         setParent(parent);
     }
 
+    public Travel() throws InvalidClassException {
+        steps = new MultipleBidirectionnalReferencesToTravel(this, taillesteps, taillemin);
+    }
+
+
     public SingleRefenrence<Calendar> getParent() {
         return parent;
     }
