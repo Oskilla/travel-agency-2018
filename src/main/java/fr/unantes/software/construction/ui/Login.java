@@ -29,9 +29,8 @@ public class Login {
     private Stage stage;
     private ArrayList<Travel> listeVoyages;
 
-    public Login(String s, UserManager basededonnee, ArrayList<Travel> listeVoyages, Stage stage) {
+    public Login(UserManager basededonnee, ArrayList<Travel> listeVoyages, Stage stage) {
         this.bd = basededonnee;
-        this.nom = s;
         this.stage = stage;
         this.listeVoyages = listeVoyages;
     }
@@ -59,14 +58,14 @@ public class Login {
 
                 if ((bd.getNamesToUsers().get(idutilisateur.getText())) instanceof Agent) {
 
-                    ctrlAgent ctrlA = new ctrlAgent(bd, listeVoyages, idutilisateur.getText());
+                    ctrlAgent ctrlA = new ctrlAgent(bd, listeVoyages, idutilisateur.getText(),stage);
 
                     final URL url3 = getClass().getResource("/views/Agent.fxml");
                     final FXMLLoader fxmlLoader3 = new FXMLLoader(url3);
                     fxmlLoader3.setController(ctrlA);
                     // Chargement du FXML.
                     final AnchorPane root3 = (AnchorPane) fxmlLoader3.load();
-                    Scene scene3 = new Scene(root3, 600, 800);
+                    Scene scene3 = new Scene(root3, 600, 700);
 
                     stage.setScene(scene3);
 
@@ -80,7 +79,7 @@ public class Login {
 
                     System.out.println("Connexion de Dieu");
                     //construction du controleur de la vue superUtilisateur
-                    ctrlSuperUtilisateur ctrlSuperUtilisateurtest = new ctrlSuperUtilisateur(bd);
+                    ctrlSuperUtilisateur ctrlSuperUtilisateurtest = new ctrlSuperUtilisateur(bd,listeVoyages,stage);
 
                     //Localisation du fichier FXML
                     final URL url2 = getClass().getResource("/views/VueSuperUtilisateur.fxml");
@@ -94,7 +93,7 @@ public class Login {
                     // Chargement du FXML.
                     final AnchorPane root2 = (AnchorPane) fxmlLoader2.load();
 
-                    Scene scene2 = new Scene(root2, 800, 800);
+                    Scene scene2 = new Scene(root2, 620, 400);
 
                     stage.setScene(scene2);
                 }

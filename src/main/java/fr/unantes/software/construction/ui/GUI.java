@@ -105,7 +105,7 @@ public class GUI extends Application  {
     public void start(Stage stage) throws Exception {
 
         //construction du controleur du login
-        Login login = new Login("L'interface trop bg de YM", bd, bd2, stage);
+        Login login = new Login(bd, bd2, stage);
 
         // Localisation du fichier FXML.<
         final URL url = getClass().getResource("/views/Login.fxml");
@@ -120,7 +120,7 @@ public class GUI extends Application  {
         final AnchorPane root = (AnchorPane) fxmlLoader.load();
 
 
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 460, 320);
         stage.setScene(scene);
         stage.show();
 

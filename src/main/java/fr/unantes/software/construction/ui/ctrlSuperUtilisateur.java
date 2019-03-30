@@ -1,5 +1,6 @@
 package fr.unantes.software.construction.ui;
 
+import fr.unantes.software.construction.calendar.Travel;
 import fr.unantes.software.construction.people.Administrateur;
 import fr.unantes.software.construction.people.Agent;
 import fr.unantes.software.construction.people.Person;
@@ -7,6 +8,8 @@ import fr.unantes.software.construction.security.UserManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -14,9 +17,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Label;
 
 import java.awt.*;
+import java.io.IOException;
+import java.net.URL;
 import java.util.*;
 
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class ctrlSuperUtilisateur {
 
@@ -27,13 +34,19 @@ public class ctrlSuperUtilisateur {
     public TextField idnouveaumdp;
     public TextField idnouveaurole;
     public Label idmanquerole;
+    public Label idmanquechamp;
     public TextField idnomasupp;
 
     private UserManager bd;
+    private ArrayList<Travel> bd2;
+    private Stage stage;
+
 
     //Contructeur de la classe
-    public ctrlSuperUtilisateur(UserManager basededonnee) throws Exception {
+    public ctrlSuperUtilisateur(UserManager basededonnee, ArrayList bd2, Stage stage) throws Exception {
         this.bd = basededonnee;
+        this.bd2 = bd2;
+        this.stage = stage;
     }
 
     public void miseajour() throws Exception {
@@ -81,31 +94,38 @@ public class ctrlSuperUtilisateur {
 
         if (!(idnouveaurole.getText().compareTo("Agent") == 0) && !(idnouveaurole.getText().compareTo("Administrateur") == 0)) {
             idmanquerole.setVisible(true);
-        }
 
-        if (!idnouveaunom.getText().isEmpty() && !idnouveaumdp.getText().isEmpty() && !idnouveaurole.getText().isEmpty()) {
+        }else {
+            idmanquerole.setVisible(false);
+            if (!idnouveaunom.getText().isEmpty() && !idnouveaumdp.getText().isEmpty() && !idnouveaurole.getText().isEmpty()) {
+                idmanquechamp.setVisible(false);
 
-            if (idnouveaurole.getText().compareTo("Agent") == 0) {
-                Person nouveau = new Agent(idnouveaunom.getText());
-                System.out.println("Le nouvel agent s'appelle " + nouveau.getName());
-                bd.addUser(nouveau, idnouveaumdp.getText());
-                idmanquerole.setVisible(false);
-                this.miseajour();
+                if (idnouveaurole.getText().compareTo("Agent") == 0) {
+                    Person nouveau = new Agent(idnouveaunom.getText());
+                    System.out.println("Le nouvel agent s'appelle " + nouveau.getName());
+                    bd.addUser(nouveau, idnouveaumdp.getText());
+                    idmanquerole.setVisible(false);
+                    this.miseajour();
 
-            } else if (idnouveaurole.getText().compareTo("Administrateur") == 0) {
-                Person nouveau = new Administrateur(idnouveaunom.getText());
-                System.out.println("Le nouvel administrateur s'appelle " + nouveau.getName());
-                bd.addUser(nouveau, idnouveaumdp.getText());
-                idmanquerole.setVisible(false);
-                this.miseajour();
+                } else if (idnouveaurole.getText().compareTo("Administrateur") == 0) {
+                    Person nouveau = new Administrateur(idnouveaunom.getText());
+                    System.out.println("Le nouvel administrateur s'appelle " + nouveau.getName());
+                    bd.addUser(nouveau, idnouveaumdp.getText());
+                    idmanquerole.setVisible(false);
+                    this.miseajour();
 
-                System.out.println("Ajout");
+                    System.out.println("Ajout");
 
+                }
+            } else {
+                idmanquechamp.setVisible(true);
             }
         }
     }
 
     public void supprimerutilisateur(ActionEvent event) throws Exception {
+        idmanquerole.setVisible(false);
+        idmanquechamp.setVisible(false);
 
         if (!idnomasupp.getText().isEmpty()) {
 
@@ -151,5 +171,26 @@ public class ctrlSuperUtilisateur {
             }
 
         }
+    }
+
+    public void deconnexion(ActionEvent event) throws IOException {
+        //construction du controleur du login
+        Login login = new Login(bd, bd2, stage);
+
+        // Localisation du fichier FXML.<
+        final URL url = getClass().getResource("/views/Login.fxml");
+
+        // Création du loader.
+        final FXMLLoader fxmlLoader = new FXMLLoader(url);
+
+        //Affection du controleur
+        fxmlLoader.setController(login);
+
+        // Chargement du FXML.
+        final AnchorPane root = (AnchorPane) fxmlLoader.load();
+
+
+        Scene scene = new Scene(root, 460, 320);
+        stage.setScene(scene);
     }
 }
