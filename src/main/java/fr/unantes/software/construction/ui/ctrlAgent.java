@@ -44,7 +44,6 @@ public class ctrlAgent {
 
     public Label erreur;
     public Label erreur2;
-    public TextField test;
     private UserManager bd;
     private String nom;
     private Agent courant;
@@ -65,8 +64,6 @@ public class ctrlAgent {
         tableTravelUser.setEditable(false);
 
         Collection<Travel> voyagesUsers = courant.getCalendar().get().getTravels().get();
-
-        System.out.println(voyagesUsers);
         ArrayList<Voyage> listeVoyagesUser = new ArrayList<>();
 
         for(Travel trav : voyagesUsers){
@@ -88,7 +85,7 @@ public class ctrlAgent {
     }
 
     public void afficher(ActionEvent actionEvent){
-        tableTravelUser.setEditable(false);
+        tableTravel.setEditable(false);
 
         ArrayList<Voyage> listeVoyages = new ArrayList<>();
 
