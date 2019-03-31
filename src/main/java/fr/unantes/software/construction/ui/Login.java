@@ -73,7 +73,19 @@ public class Login {
 
 
                 } else if ((bd.getNamesToUsers().get(idutilisateur.getText())) instanceof Administrateur) {
-                    System.out.println("Connexion avec un administrateur");
+                    ctrlAdministrateur ctrlAdmin = new ctrlAdministrateur(bd, listeVoyages, idutilisateur.getText(),stage);
+
+                    final URL url4 = getClass().getResource("/views/Admin.fxml");
+                    final FXMLLoader fxmlLoader4 = new FXMLLoader(url4);
+                    fxmlLoader4.setController(ctrlAdmin);
+                    // Chargement du FXML.
+                    final AnchorPane root4 = (AnchorPane) fxmlLoader4.load();
+                    Scene scene4 = new Scene(root4, 830, 425);
+
+                    stage.setScene(scene4);
+
+                    System.out.println("Connexion avec un admin");
+
 
                 } else  if ((bd.getNamesToUsers().get(idutilisateur.getText())) instanceof Person ) {
 
@@ -97,10 +109,8 @@ public class Login {
 
                     stage.setScene(scene2);
                 }
-                else {
-                    System.out.println("Mauvaise connexion");
-                    idnoutilisateur.setVisible(true);
-                }
+            }else{
+                idnoutilisateur.setVisible(true);
             }
 
         }

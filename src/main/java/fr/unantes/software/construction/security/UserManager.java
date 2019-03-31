@@ -1,6 +1,7 @@
 
 package fr.unantes.software.construction.security;
 
+import fr.unantes.software.construction.calendar.Calendar;
 import fr.unantes.software.construction.people.Administrateur;
 import fr.unantes.software.construction.people.Agent;
 import fr.unantes.software.construction.people.Person;
@@ -44,6 +45,18 @@ public class UserManager {
         return listeAgent;
     }
 
+    public ArrayList<Administrateur> getAdmin(){
+        ArrayList<Administrateur> listeAdmin = new ArrayList<>();
+        for(Map.Entry<String, Person> entry : namesToUsers.entrySet()) {
+            Person valeur = entry.getValue();
+            if(valeur instanceof Administrateur){
+                listeAdmin.add((Administrateur) valeur);
+            }
+        }
+        return listeAdmin;
+    }
+
+
 
     /**
      * Test if a user is registered in the manager
@@ -69,6 +82,9 @@ public class UserManager {
         else {
             namesToUsers.put(person.getName(), person);
             mapMdp.addMdp(person, password);
+            if(person instanceof Agent){
+                new Calendar((Agent)person);
+            }
             return true;
         }
     }
