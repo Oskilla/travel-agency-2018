@@ -116,10 +116,28 @@ public class CalendarTest {
     @Test
     public void testUnset() throws InvalidClassException {
         Agent agent1 = new Agent("Paul");
+        Agent agent2 = new Agent("George");
+        Calendar cal2 = new Calendar(agent2);
         cal1.setOwner(agent1);
+
         assertTrue(cal1.getOwner().isSet());
         assertEquals(cal1.getOwner().get(), agent1);
+        assertTrue(cal2.getOwner().isSet());
+        assertEquals(cal2.getOwner().get(), agent2);
+        cal1.setOwner(agent2);
         assertTrue(cal1.getOwner().isSet());
+        assertEquals(cal1.getOwner().get(), agent2);
+        assertFalse(cal2.getOwner().isSet());
+    }
+    @Test
+    public void testOwnerisNull() throws InvalidClassException {
+        assertThrows(IllegalArgumentException.class, () -> {
+        cal1.setOwner(null);
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            Calendar cal2 = new Calendar(null);
+        });
+
     }
     @AfterEach
     public void tearDown() throws Exception {

@@ -48,5 +48,11 @@ public class AgentTest {
         assertEquals(p1.getCalendar().get(), cal);
         assertEquals(cal.getOwner().get(), p1);
     }
+    @Test
+    public void testCalendarisNull() {
+        assertThrows(IllegalArgumentException.class, () -> {
+           p1.setCalendar(null);
+        });
+    }
 
 }

@@ -24,6 +24,7 @@ public class Agent extends Person{
     }
 
     public void setCalendar(Calendar calendar){
+        if(calendar == null){throw new IllegalArgumentException("calendar cannot be null");}
         this.calendar.set(calendar);
     }
 

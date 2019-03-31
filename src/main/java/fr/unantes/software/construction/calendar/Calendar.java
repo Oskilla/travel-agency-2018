@@ -24,7 +24,9 @@ public class Calendar {
     }
 
     public void setOwner(Agent owner) {
-        this.owner.set(owner);
+
+        if (owner == null) { throw new IllegalArgumentException("owner cannot be null");}
+            this.owner.set(owner);
     }
 
     public boolean addTravel(Travel travel) {
