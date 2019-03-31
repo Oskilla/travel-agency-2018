@@ -32,9 +32,9 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="idmanquemdp" layoutX="276.0" layoutY="205.0" text="Il manque un mot de passe !" visible="false" />
-      <Label fx:id="idmanqueutilisateur" layoutX="276.0" layoutY="147.0" text="Il manque un nom d'utilisateur !" visible="false" />
-      <Label fx:id="idnoutilisateur" layoutX="140.0" layoutY="299.0" text="Compte utilisateur inexistant. Veuillez contacter le SuperUtilisateur." visible="false" />
+      <Label fx:id="idmanquemdp" layoutX="251.0" layoutY="205.0" text="Il manque un mot de passe !" visible="false" />
+      <Label fx:id="idmanqueutilisateur" layoutX="242.0" layoutY="144.0" text="Il manque un nom d'utilisateur !" visible="false" />
+      <Label fx:id="idnoutilisateur" layoutX="64.0" layoutY="278.0" text="Compte utilisateur inexistant. Veuillez contacter le SuperUtilisateur." visible="false" />
       <PasswordField fx:id="idmdp" layoutX="246.0" layoutY="175.0" prefHeight="25.0" prefWidth="161.0" promptText="Mot de passe..." />
    </children>
 </AnchorPane>

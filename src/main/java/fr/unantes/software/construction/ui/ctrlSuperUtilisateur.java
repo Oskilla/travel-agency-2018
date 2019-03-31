@@ -91,15 +91,14 @@ public class ctrlSuperUtilisateur {
 
 
     public void ajoututilisateur(ActionEvent actionEvent) throws Exception {
-
-        if (!(idnouveaurole.getText().compareTo("Agent") == 0) && !(idnouveaurole.getText().compareTo("Administrateur") == 0)) {
-            idmanquerole.setVisible(true);
-
-        }else {
-            idmanquerole.setVisible(false);
-            if (!idnouveaunom.getText().isEmpty() && !idnouveaumdp.getText().isEmpty() && !idnouveaurole.getText().isEmpty()) {
-                idmanquechamp.setVisible(false);
-
+        if(idnouveaunom.getText().isEmpty()||idnouveaumdp.getText().isEmpty()||idnouveaurole.getText().isEmpty()){
+            idmanquechamp.setVisible(true);
+        }else{
+            idmanquechamp.setVisible(false);
+            if (!(idnouveaurole.getText().compareTo("Agent") == 0) && !(idnouveaurole.getText().compareTo("Administrateur") == 0)) {
+                idmanquerole.setVisible(true);
+            }else {
+                idmanquerole.setVisible(false);
                 if (idnouveaurole.getText().compareTo("Agent") == 0) {
                     Person nouveau = new Agent(idnouveaunom.getText());
                     System.out.println("Le nouvel agent s'appelle " + nouveau.getName());
@@ -113,12 +112,9 @@ public class ctrlSuperUtilisateur {
                     bd.addUser(nouveau, idnouveaumdp.getText());
                     idmanquerole.setVisible(false);
                     this.miseajour();
-
                     System.out.println("Ajout");
 
                 }
-            } else {
-                idmanquechamp.setVisible(true);
             }
         }
     }
