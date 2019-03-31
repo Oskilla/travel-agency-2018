@@ -25,6 +25,8 @@ public class GUI extends Application  {
     private final Person solineLecomte;
     private final Person gaelLode;
     private final Person yvesmarieCarette;
+    private final Person test;
+
     private final UserManager bd;
     private final ArrayList<Travel> bd2;
     private final Person dieu;
@@ -37,11 +39,15 @@ public class GUI extends Application  {
         solineLecomte = new Agent("Soline");
         gaelLode = new Administrateur("Gael");
         yvesmarieCarette = new Administrateur("Yves-Marie");
+        test = new Agent("test");
+
 
         bd.addUser(dieu,"mdpdieu");
         bd.addUser(solineLecomte, "mdpsoline");
         bd.addUser(gaelLode, "mdpgael");
         bd.addUser(yvesmarieCarette, "mdpyvesmarie");
+        bd.addUser(test, "test");
+
 
 
         Calendar cal1 = new Calendar((Agent)solineLecomte);
