@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -19,7 +20,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import javax.accessibility.AccessibleRelation;
-import java.awt.*;
 import java.io.IOException;
 import java.io.InvalidClassException;
 import java.net.URL;
@@ -40,6 +40,8 @@ public class GestionVoyages {
     public TextField idPdepart;
     public DatePicker idHarr;
     public DatePicker idHdepart;
+
+    public Label idmanquechamps;
 
 
     public TableView tableTravel;
@@ -155,9 +157,9 @@ public class GestionVoyages {
     }
 
 
-    public void ajout() throws InvalidClassException {
-        if(     !idHarr.getValue().equals(null) &&
-                !idHdepart.getValue().equals(null) &&
+    public void ajout() throws Exception {
+        if(     !(idHarr.getValue()==null) &&
+                !(idHdepart.getValue()==null) &&
                 !idParr.getText().isEmpty() &&
                 !idPdepart.getText().isEmpty() &&
                 !idVarr.getText().isEmpty() &&
@@ -168,7 +170,12 @@ public class GestionVoyages {
             Travel nouveautravel = new Travel();
             nouveautravel.getSteps().add(corr);
             bd2.add(nouveautravel);
+            idmanquechamps.setVisible(false);
+            }
+        else{
+            idmanquechamps.setVisible(true);
         }
+
         this.afficher();
 
     }

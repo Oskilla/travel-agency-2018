@@ -55,5 +55,6 @@
       <TextField fx:id="idParr" layoutX="215.0" layoutY="256.0" promptText="Pays d'arrivée" />
       <DatePicker fx:id="idHdepart" layoutX="404.0" layoutY="217.0" prefHeight="26.0" prefWidth="180.0" promptText="Heure de départ" />
       <DatePicker fx:id="idHarr" layoutX="404.0" layoutY="256.0" prefHeight="26.0" prefWidth="180.0" promptText="Heure d'arrivée" />
+      <Label fx:id="idmanquechamps" layoutX="143.0" layoutY="282.0" text="Tous les champs ne sont pas remplis correctement ! " visible="false" />
     </children>
 </AnchorPane>
