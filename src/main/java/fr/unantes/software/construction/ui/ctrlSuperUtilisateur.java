@@ -90,7 +90,7 @@ public class ctrlSuperUtilisateur {
     }
 
 
-    public void ajoututilisateur(ActionEvent actionEvent) throws Exception {
+    public void ajoututilisateur() throws Exception {
         if(idnouveaunom.getText().isEmpty()||idnouveaumdp.getText().isEmpty()||idnouveaurole.getText().isEmpty()){
             idmanquechamp.setVisible(true);
         }else{
@@ -119,53 +119,31 @@ public class ctrlSuperUtilisateur {
         }
     }
 
-    public void supprimerutilisateur(ActionEvent event) throws Exception {
+    public void supprimerutilisateur() throws Exception {
+
         idmanquerole.setVisible(false);
         idmanquechamp.setVisible(false);
 
-        if (!idnomasupp.getText().isEmpty()) {
+        Person perso = (Person) idlistutilisateur.getSelectionModel().getSelectedItem();
 
-            System.out.println(idnomasupp.getText());
-
-            //Nous récupérons une Collection contenant des Person
-            Collection<Person> collectionPer = bd.getNamesToUsers().values();
-
-            //Utilisation d'un itérateur générique
-            Iterator<Person> it = collectionPer.iterator();
-
-            boolean sortir = false;
-
-            //On récupere les données
-            while (it.hasNext() && !sortir) {
-
-                //On recupere l'instance
-                Person key = it.next();
-
-                if (key.getName().contains(idnomasupp.getText())) {
+        System.out.println("Vous voulez suprrimer cette personne" + perso.getName());
 
 
-                    if (key instanceof Administrateur) {
+        if (perso instanceof Administrateur) {
 
-                        key.setName(key.getName().replace(" (Administrateur)", ""));
-                        System.out.println(key.getName());
-                        bd.removeUser(key);
-                        System.out.println(bd.getNamesToUsers());
-                        this.miseajour();
-                        sortir = true;
-                    }
+            perso.setName(perso.getName().replace(" (Administrateur)", ""));
+            bd.removeUser(perso);
+            System.out.println(bd.getNamesToUsers());
+            this.miseajour();
+        }
 
-                    if (key instanceof Agent) {
+        if (perso instanceof Agent) {
 
-                        key.setName(key.getName().replace(" (Agent)", ""));
-                        System.out.println(key.getName());
-                        bd.removeUser(key);
-                        System.out.println(bd.getNamesToUsers());
-                        this.miseajour();
-                        sortir = true;
-                    }
-                }
-            }
-
+            perso.setName(perso.getName().replace(" (Agent)", ""));
+            System.out.println(perso.getName());
+            bd.removeUser(perso);
+            System.out.println(bd.getNamesToUsers());
+            this.miseajour();
         }
     }
 
@@ -188,5 +166,34 @@ public class ctrlSuperUtilisateur {
 
         Scene scene = new Scene(root, 460, 320);
         stage.setScene(scene);
+    }
+
+    public void gestionvoyage(ActionEvent event) throws Exception {
+
+        //construction du controleur du login
+        GestionVoyages ctrlGestionVoyages = new GestionVoyages(bd, bd2, stage);
+
+        // Localisation du fichier FXML.<
+        final URL url = getClass().getResource("/views/GestionVoyages.fxml");
+
+        // Création du loader.
+        final FXMLLoader fxmlLoader = new FXMLLoader(url);
+
+        //Affection du controleur
+        fxmlLoader.setController(ctrlGestionVoyages);
+
+        // Chargement du FXML.
+        final AnchorPane root = (AnchorPane) fxmlLoader.load();
+
+
+        Scene scene = new Scene(root, 620, 400);
+        stage.setScene(scene);
+    }
+
+    public void modifier(ActionEvent event) throws Exception{
+
+        this.supprimerutilisateur();
+        this.ajoututilisateur();
+
     }
 }
