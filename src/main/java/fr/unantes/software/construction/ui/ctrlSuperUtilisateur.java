@@ -81,7 +81,7 @@ public class ctrlSuperUtilisateur {
 
             //On recupere l'instance
             Person key = it.next();
-            if (key.getName() != "dieu") {
+            if (key.getName() != "Dieu") {
                 if (key instanceof Administrateur && !key.getName().contains("(Administrateur)")) {
                     String tmp = key.getName();
                     key.setName(tmp + " (Administrateur)");
@@ -162,39 +162,44 @@ public class ctrlSuperUtilisateur {
      * @throws Exception
      */
     public void modifier() throws Exception {
+        idmanquerole.setVisible(false);
+        idmanquechamp.setVisible(false);
 
         Person perso = idlistutilisateur.getSelectionModel().getSelectedItem();
-        perso.setName(perso.getName().replace(" (Administrateur)", ""));
-        perso.setName(perso.getName().replace(" (Agent)", ""));
-        String nom = perso.getName();
-        String mdp = bd.getMapMdp().getMdp(perso);
-        String role = null;
+        if(perso!=null){
+            perso.setName(perso.getName().replace(" (Administrateur)", ""));
+            perso.setName(perso.getName().replace(" (Agent)", ""));
+            String nom = perso.getName();
+            String mdp = bd.getMapMdp().getMdp(perso);
+            String role = null;
 
-        if (perso instanceof Agent) {
-            role = "Agent";
-        } else {
-            role = "Administrateur";
+            if (perso instanceof Agent) {
+                role = "Agent";
+            } else {
+                role = "Administrateur";
+            }
+
+            if (!idnouveaunom.getText().isEmpty()) {
+                nom = idnouveaunom.getText();
+            }
+            if (!idnouveaumdp.getText().isEmpty()) {
+                mdp = idnouveaumdp.getText();
+            }
+            if (idnouveaurole.getText().compareTo("Agent") == 0 || idnouveaurole.getText().compareTo("Administrateur") == 0) {
+                role = idnouveaurole.getText();
+            }
+            this.supprimerutilisateur();
+            if (role.compareTo("Agent") ==0){
+                Person nouveau = new Agent(nom);
+                bd.addUser(nouveau, mdp);
+                this.miseajour();
+            } else if (role.compareTo("Administrateur")==0) {
+                Person nouveau = new Administrateur(nom);
+                bd.addUser(nouveau, mdp);
+                this.miseajour();
+            }
         }
 
-        if (!idnouveaunom.getText().isEmpty()) {
-            nom = idnouveaunom.getText();
-        }
-        if (!idnouveaumdp.getText().isEmpty()) {
-            mdp = idnouveaumdp.getText();
-        }
-        if (idnouveaurole.getText().compareTo("Agent") == 0 || idnouveaurole.getText().compareTo("Administrateur") == 0) {
-            role = idnouveaurole.getText();
-        }
-        this.supprimerutilisateur();
-        if (role.compareTo("Agent") ==0){
-            Person nouveau = new Agent(nom);
-            bd.addUser(nouveau, mdp);
-            this.miseajour();
-        } else if (role.compareTo("Administrateur")==0) {
-            Person nouveau = new Administrateur(nom);
-            bd.addUser(nouveau, mdp);
-            this.miseajour();
-        }
 
     }
 

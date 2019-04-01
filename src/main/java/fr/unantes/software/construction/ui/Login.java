@@ -117,7 +117,7 @@ public class Login {
                     // Chargement du FXML.
                     final AnchorPane root2 = (AnchorPane) fxmlLoader2.load();
 
-                    Scene scene2 = new Scene(root2, 620, 400);
+                    Scene scene2 = new Scene(root2, 660, 400);
 
                     stage.setScene(scene2);
                 }

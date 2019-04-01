@@ -35,21 +35,21 @@
             <TableColumn fx:id="hArr" prefWidth="78.0" text="Date Arrivee" />
          </columns>
       </TableView>
-      <Button fx:id="afficher_maj1" layoutX="14.0" layoutY="278.0" mnemonicParsing="false" onAction="#afficher" prefHeight="26.0" prefWidth="64.0" text="Afficher" />
+      <Button fx:id="afficher_maj1" layoutX="14.0" layoutY="278.0" mnemonicParsing="false" onAction="#afficher" prefHeight="26.0" prefWidth="81.0" text="Afficher" />
       <TableView fx:id="agents" layoutX="608.0" layoutY="72.0" prefHeight="200.0" prefWidth="200.0">
         <columns>
           <TableColumn fx:id="colAgents" prefWidth="198.0" text="Agents" />
         </columns>
       </TableView>
-      <Button fx:id="afficher_maj2" layoutX="744.0" layoutY="278.0" mnemonicParsing="false" onAction="#afficher2" prefHeight="26.0" prefWidth="64.0" text="Afficher" />
+      <Button fx:id="afficher_maj2" layoutX="735.0" layoutY="278.0" mnemonicParsing="false" onAction="#afficher2" prefHeight="26.0" prefWidth="73.0" text="Afficher" />
       <Button fx:id="btnAjout" layoutX="380.0" layoutY="331.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="45.0" prefWidth="106.0" text="Ajouter">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Label fx:id="erreur" layoutX="245.0" layoutY="291.0" prefHeight="17.0" prefWidth="135.0" text="Selectionnez un voyage" visible="false" />
-      <Label fx:id="erreur2" layoutX="251.0" layoutY="562.0" prefHeight="17.0" prefWidth="123.0" text="Selectionnez un agent" visible="false" />
-      <Label fx:id="valide" layoutX="301.0" layoutY="390.0" prefHeight="25.0" prefWidth="265.0" text="Voyage assigné à l'agent sélectionné" visible="false">
+      <Label fx:id="erreur" layoutX="221.0" layoutY="283.0" prefHeight="17.0" prefWidth="160.0" text="Selectionnez un voyage" visible="false" />
+      <Label fx:id="erreur2" layoutX="578.0" layoutY="283.0" prefHeight="17.0" prefWidth="153.0" text="Selectionnez un agent" visible="false" />
+      <Label fx:id="valide" layoutX="281.0" layoutY="386.0" prefHeight="25.0" prefWidth="305.0" text="Voyage assigné à l'agent sélectionné" visible="false">
          <font>
             <Font size="16.0" />
          </font>

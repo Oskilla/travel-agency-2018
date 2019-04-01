@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="idsuperutilisateur" maxHeight="9999.0" maxWidth="9999.0" minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="idsuperutilisateur" maxHeight="9999.0" maxWidth="9999.0" minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Label layoutX="137.0" layoutY="22.0" text="Bienvenue Super Utilisateur" textAlignment="CENTER">
             <font>
@@ -27,13 +27,13 @@
             </columns>
         </TableView>
         <Button layoutX="114.0" layoutY="338.0" mnemonicParsing="false" onAction="#miseajour" prefHeight="26.0" prefWidth="69.0" text="Afficher" />
-        <Button layoutX="293.0" layoutY="189.0" mnemonicParsing="false" onAction="#ajoututilisateur" prefHeight="26.0" prefWidth="118.0" text="Ajouter l'utilisateur" />
-        <TextField fx:id="idnouveaunom" layoutX="280.0" layoutY="127.0" promptText="Nom" />
-        <TextField fx:id="idnouveaumdp" layoutX="454.0" layoutY="127.0" promptText="Mot de passe" />
-        <TextField fx:id="idnouveaurole" layoutX="365.0" layoutY="159.0" prefHeight="26.0" prefWidth="171.0" promptText="Role" />
-        <Label fx:id="idmanquerole" layoutX="389.0" layoutY="185.0" text="Agent / Administrateur ?" visible="false" />
-        <Button layoutX="353.0" layoutY="244.0" mnemonicParsing="false" onAction="#supprimerutilisateur" prefHeight="26.0" prefWidth="196.0" text="Supprimer l'utilisateur selectionné" />
-        <Button fx:id="logout" layoutX="568.0" layoutY="14.0" mnemonicParsing="false" onAction="#deconnexion">
+        <Button layoutX="276.0" layoutY="216.0" mnemonicParsing="false" onAction="#ajoututilisateur" prefHeight="26.0" prefWidth="143.0" text="Ajouter l'utilisateur" />
+        <TextField fx:id="idnouveaunom" layoutX="288.0" layoutY="125.0" promptText="Nom" />
+        <TextField fx:id="idnouveaumdp" layoutX="462.0" layoutY="125.0" promptText="Mot de passe" />
+        <TextField fx:id="idnouveaurole" layoutX="373.0" layoutY="157.0" prefHeight="26.0" prefWidth="171.0" promptText="Role" />
+        <Label fx:id="idmanquerole" layoutX="379.0" layoutY="183.0" text="Agent / Administrateur ?" visible="false" />
+        <Button layoutX="361.0" layoutY="265.0" mnemonicParsing="false" onAction="#supprimerutilisateur" prefHeight="26.0" prefWidth="196.0" text="Supprimer l'utilisateur selectionné" />
+        <Button fx:id="logout" layoutX="601.0" layoutY="14.0" mnemonicParsing="false" onAction="#deconnexion">
             <graphic>
                 <ImageView fitHeight="27.0" fitWidth="62.0" layoutX="519.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -42,11 +42,11 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Label fx:id="idmanquechamp" layoutX="389.0" layoutY="235.0" prefHeight="17.0" prefWidth="131.0" text="Remplir tous les champs" visible="false" />
-        <Button layoutX="426.0" layoutY="349.0" mnemonicParsing="false" onAction="#gestionvoyage" prefHeight="30.0" prefWidth="183.0" text="Gestion des voyages →">
+        <Label fx:id="idmanquechamp" layoutX="374.0" layoutY="200.0" prefHeight="17.0" prefWidth="171.0" text="Remplir tous les champs" visible="false" />
+        <Button layoutX="446.0" layoutY="351.0" mnemonicParsing="false" onAction="#gestionvoyage" prefHeight="30.0" prefWidth="183.0" text="Gestion des voyages →">
          <font>
             <Font size="14.0" />
          </font></Button>
-        <Button layoutX="419.0" layoutY="190.0" mnemonicParsing="false" onAction="#modifier" prefHeight="25.0" prefWidth="196.0" text="Mofidier l'utilisateur selectionné" />
+        <Button layoutX="425.0" layoutY="216.0" mnemonicParsing="false" onAction="#modifier" prefHeight="26.0" prefWidth="229.0" text="Mofidier l'utilisateur selectionné" />
     </children>
 </AnchorPane>
