@@ -10,8 +10,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -19,7 +21,9 @@ import javafx.stage.Stage;
 import javax.accessibility.AccessibleRelation;
 import java.awt.*;
 import java.io.IOException;
+import java.io.InvalidClassException;
 import java.net.URL;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -29,6 +33,13 @@ public class GestionVoyages {
     private UserManager bd;
     private ArrayList<Travel> bd2;
     private Stage stage;
+
+    public TextField idVarr;
+    public TextField idVdepart;
+    public TextField idParr;
+    public TextField idPdepart;
+    public DatePicker idHarr;
+    public DatePicker idHdepart;
 
 
     public TableView tableTravel;
@@ -143,5 +154,23 @@ public class GestionVoyages {
         stage.setScene(scene);
     }
 
+
+    public void ajout() throws InvalidClassException {
+        if(     !idHarr.getValue().equals(null) &&
+                !idHdepart.getValue().equals(null) &&
+                !idParr.getText().isEmpty() &&
+                !idPdepart.getText().isEmpty() &&
+                !idVarr.getText().isEmpty() &&
+                !idVdepart.getText().isEmpty()){
+            City c = new City(idPdepart.getText(),idVdepart.getText());
+            City c2 = new City(idParr.getText(),idVarr.getText());
+            Correspondence corr  = new Correspondence(c,c2,Date.from(idHdepart.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()), Date.from(idHarr.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+            Travel nouveautravel = new Travel();
+            nouveautravel.getSteps().add(corr);
+            bd2.add(nouveautravel);
+        }
+        this.afficher();
+
+    }
 
 }

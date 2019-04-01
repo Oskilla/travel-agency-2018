@@ -35,7 +35,7 @@ public class GUI extends Application  {
         bd =new UserManager();
         bd2 = new ArrayList<Travel>();
 
-        dieu = new Person("dieu");
+        dieu = new Person("Dieu");
         solineLecomte = new Agent("Soline");
         gaelLode = new Administrateur("Gael");
         yvesmarieCarette = new Administrateur("Yves-Marie");

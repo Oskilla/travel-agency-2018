@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="345.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="345.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Label layoutX="191.0" layoutY="14.0" text="Gestion des voyages">
             <font>
                 <Font size="24.0" />
             </font>
         </Label>
-        <TableView fx:id="tableTravel" layoutX="14.0" layoutY="98.0" prefHeight="200.0" prefWidth="572.0">
+        <TableView fx:id="tableTravel" layoutX="14.0" layoutY="73.0" prefHeight="133.0" prefWidth="572.0">
             <columns>
                 <TableColumn fx:id="vDep2" prefWidth="94.0" text="Ville Depart" />
                 <TableColumn fx:id="pDep2" prefWidth="97.0" text="Pays Depart" />
@@ -27,7 +29,7 @@
             </columns>
         </TableView>
         <Button fx:id="afficher_maj1" layoutX="14.0" layoutY="307.0" mnemonicParsing="false" onAction="#afficher" prefHeight="26.0" prefWidth="135.0" text="Afficher" />
-      <Button layoutX="206.0" layoutY="308.0" mnemonicParsing="false" onAction="#supprimer" text="Supprimer le voyage selectionné" />
+      <Button layoutX="184.0" layoutY="307.0" mnemonicParsing="false" onAction="#supprimer" text="Supprimer le voyage selectionné" />
       <Button fx:id="logout" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#precedent">
          <graphic>
             <ImageView fitHeight="27.0" fitWidth="62.0" layoutX="519.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
@@ -46,5 +48,12 @@
             </ImageView>
          </graphic>
       </Button>
+      <Button layoutX="448.0" layoutY="307.0" mnemonicParsing="false" onAction="#ajout" text="Ajouter un voyage" />
+      <TextField fx:id="idVdepart" layoutX="14.0" layoutY="217.0" promptText="Ville de départ" />
+      <TextField fx:id="idVarr" layoutX="14.0" layoutY="256.0" promptText="Ville d'arrivée" />
+      <TextField fx:id="idPdepart" layoutX="215.0" layoutY="217.0" promptText="Pays de départ" />
+      <TextField fx:id="idParr" layoutX="215.0" layoutY="256.0" promptText="Pays d'arrivée" />
+      <DatePicker fx:id="idHdepart" layoutX="404.0" layoutY="217.0" prefHeight="26.0" prefWidth="180.0" promptText="Heure de départ" />
+      <DatePicker fx:id="idHarr" layoutX="404.0" layoutY="256.0" prefHeight="26.0" prefWidth="180.0" promptText="Heure d'arrivée" />
     </children>
 </AnchorPane>
