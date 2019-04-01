@@ -27,6 +27,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+/**
+ * Administrator's view's controller
+ */
 public class ctrlAdministrateur {
     public TableView tableTravel;
     public TableColumn vDep;
@@ -49,6 +52,13 @@ public class ctrlAdministrateur {
     private ArrayList<Travel> bd2;
     private Stage stage;
 
+    /**
+     * Controller
+     * @param bd the usermanager
+     * @param bd2 the travel list
+     * @param nom the name of the current user
+     * @param stage
+     */
     public ctrlAdministrateur(UserManager bd, ArrayList<Travel> bd2, String nom, Stage stage){
         this.bd = bd;
         this.bd2 = bd2;
@@ -58,11 +68,14 @@ public class ctrlAdministrateur {
         this.stage = stage;
     }
 
-    public void afficher(ActionEvent actionEvent){
+    /**
+     * Method used to display the travel table's content
+     * */
+    public void afficher(){
         tableTravel.setEditable(false);
 
         ArrayList<Voyage> listeVoyages = new ArrayList<>();
-
+        // For each travel, a new Voyage is created to be displayed in the table
         for(Travel travel : bd2){
             City villeArr = (City)travel.getFirstStep().getStartCity().get();
             City villeDep = (City)travel.getLastStep().getDestinationCity().get();
@@ -79,7 +92,10 @@ public class ctrlAdministrateur {
         tableTravel.setItems(list2);
     }
 
-    public void afficher2(ActionEvent event){
+    /**
+     * Method used to display the users table's content
+     */
+    public void afficher2(){
         agents.setEditable(false);
         ObservableList<Agent> listeAgents = FXCollections.observableArrayList();
         for (Agent a : bd.getAgents()){
@@ -91,14 +107,17 @@ public class ctrlAdministrateur {
     }
 
 
-
-    public void ajouter(ActionEvent actionEvent){
+    /**
+     * Method used to add a selected travel to the selected Agent's calendar
+     */
+    public void ajouter(){
         erreur.setVisible(false);
         erreur2.setVisible(false);
         Voyage voyage = (Voyage)tableTravel.getSelectionModel().getSelectedItem();
         Agent agent = (Agent)agents.getSelectionModel().getSelectedItem();
         if(voyage!=null){
             if(agent!=null){
+                //Looking for the travel corresponding to the voyage
                 Travel tmp=null;
                 for (Travel t : bd2){
                     for (Correspondence c : t.getSteps().get()){
@@ -117,7 +136,11 @@ public class ctrlAdministrateur {
         }
     }
 
-    public void deconnexion(ActionEvent event) throws IOException {
+    /**
+     * Method called to go back to the authentication screen
+     * @throws IOException
+     */
+    public void deconnexion() throws IOException {
         //construction du controleur du login
         Login login = new Login(bd, bd2, stage);
 

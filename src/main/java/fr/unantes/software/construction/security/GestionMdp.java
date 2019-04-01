@@ -7,22 +7,28 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
+/**
+ * Class that wil manager the passwords
+ */
 public class GestionMdp {
 
     private Map<String, String> usersToPasswords;
     private Map<String,byte []> usersToSalt;
 
-
+    /**
+     * Constructor
+     * The usersToPassword map will save encrypted passwords only
+     */
     public GestionMdp() {
         usersToPasswords = new HashMap<>();
         usersToSalt = new HashMap<>();
     }
 
     /**
-     * Ajouter un mot de passe dans la map
+     * Add a password to the map
      * @param person - User associated to the password
      * @param password - password to validate
-     * @return True si le mot de passe est ajouté faux sinon
+     * @return True if the password is added correctly, false otherwise
      */
     public void addMdp(Person person, String password) throws NoSuchAlgorithmException{
         byte [] salt = getSalt();
@@ -30,19 +36,38 @@ public class GestionMdp {
         usersToPasswords.put(person.getName(), encryptPassword(password,salt));
     }
 
+    /**
+     * Method that will return the map associating names to passwords
+     * @return the map associating names to passwords
+     */
     public Map<String, String> getUsersToPasswords() {
         return usersToPasswords;
     }
 
+    /**
+     * Remove a password from the map
+     * @param person - User associated to the password
+     * @return True if the password is removed correctly, false otherwise
+     */
     public void removeMdp(Person person) {
         usersToPasswords.remove(person.getName());
         usersToSalt.remove(person.getName());
     }
 
+    /**
+     * Checks if the person is already in the map
+     * @param person - User to look for
+     * @return true if the user is in the map, false otherwise
+     */
     public boolean hasUser(Person person) {
         return usersToPasswords.containsKey(person.getName())&&usersToSalt.containsKey(person.getName());
     }
 
+    /**
+     * Method that will return a user's encrypted password
+     * @param personne - User associated to the password
+     * @return the user's encrypted password
+     */
     public String getMdp(Person personne){
         return usersToPasswords.get(personne.getName());
     }
@@ -61,7 +86,12 @@ public class GestionMdp {
     }
 
 
-
+    /**
+     * Method that generates the encrypted password using a salt
+     * @param passwordToHash - the password to encrypt
+     * @param salt to salt used in the encryption
+     * @return the encrypted password
+     */
     private static String get_SHA_256_SecurePassword(String passwordToHash, byte[] salt)
     {
         String generatedPassword = null;
@@ -83,7 +113,11 @@ public class GestionMdp {
         return generatedPassword;
     }
 
-
+    /**
+     * Method that will generate a salt
+     * @return a String corresponding to a salt
+     * @throws NoSuchAlgorithmException
+     */
     //Add salt
     private static byte[] getSalt() throws NoSuchAlgorithmException
         {
@@ -93,8 +127,13 @@ public class GestionMdp {
             return salt;
         }
 
-        
 
+    /**
+     * Method that will check if the given password fits the correct user's password
+     * @param name - User's name associated to the password
+     * @param password - the password to validate
+     * @return true if the password is correct, false otherwise
+     */
     public boolean validatePassword(String name, String password) {
         if (usersToPasswords.containsKey(name)) {
             return encryptPassword(password,usersToSalt.get(name)).equals(usersToPasswords.get(name));

@@ -1,15 +1,14 @@
 package fr.unantes.software.construction.calendar;
 
-import java.util.Objects;
 import java.util.*; //Importation des packages
 
 /**
  * A correspondence has a start and arrival city, as well as a start and arrival Date
  */
 public class Correspondence {
-    private SingleRefenrence<Travel> travel;
-    private SingleRefenrence<City> startCity = new SingleReferenceToCity();
-    private SingleRefenrence<City> destinationCity = new SingleReferenceToCity();
+    private SingleReference<Travel> travel;
+    private SingleReference<City> startCity = new SingleReferenceToCity();
+    private SingleReference<City> destinationCity = new SingleReferenceToCity();
     private Date startTime; //Changement du type
     private Date arrivalTime; //Changement du type
 
@@ -35,7 +34,7 @@ public class Correspondence {
      * Method to get the correspondence's travel
      * @return a Single Reference to travel(to get the corresponding travel, use SingleReference's method get)
      */
-   public SingleRefenrence<Travel> getTravel() {
+   public SingleReference<Travel> getTravel() {
         return travel;
     }
 
@@ -52,7 +51,7 @@ public class Correspondence {
      * Method to get the departure city
      * @return a single reference to City (to get the city itself, use the SingleReference's method get)
      */
-    public SingleRefenrence getStartCity() {
+    public SingleReference getStartCity() {
         return startCity;
     }
 
@@ -69,7 +68,7 @@ public class Correspondence {
      * Method to get the destination city
      * @return a single reference to City (to get the city itself, use the SingleReference's method get)
      */
-    public SingleRefenrence getDestinationCity() {
+    public SingleReference getDestinationCity() {
         return destinationCity;
     }
 

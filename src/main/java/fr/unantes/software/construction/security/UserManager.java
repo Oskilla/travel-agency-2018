@@ -11,29 +11,45 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Class that will manage the users, and contains the passwords manager
+ */
 public class UserManager {
 
     private Map<String, Person> namesToUsers;
     private GestionMdp mapMdp;
 
 
-
-    //Constructeur de la classe
+    /**
+     * Constructor
+     * Create the passwords manager
+     */
     public UserManager() {
 
         namesToUsers = new HashMap<>();
         mapMdp = new GestionMdp();
     }
 
-
+    /**
+     * Method that will return the passwords manager
+     * @return the passwords manager
+     */
     public GestionMdp getMapMdp() {
         return mapMdp;
     }
 
+    /**
+     * Method that will return the map containing the users and their names
+     * @return the map containing the users and their names
+     */
     public Map<String, Person> getNamesToUsers() {
         return namesToUsers;
     }
 
+    /**
+     * Method that will create a list containing all the Agents created
+     * @return a list containing all the Agents created
+     */
     public ArrayList<Agent> getAgents(){
         ArrayList<Agent> listeAgent = new ArrayList<>();
         for(Map.Entry<String, Person> entry : namesToUsers.entrySet()) {
@@ -45,6 +61,10 @@ public class UserManager {
         return listeAgent;
     }
 
+    /**
+     * Method that will create a list containing all the Admin created
+     * @return a list containing all the Admin created
+     */
     public ArrayList<Administrateur> getAdmin(){
         ArrayList<Administrateur> listeAdmin = new ArrayList<>();
         for(Map.Entry<String, Person> entry : namesToUsers.entrySet()) {
@@ -66,6 +86,7 @@ public class UserManager {
     public boolean hasUser(Person person) {
         return namesToUsers.containsKey(person.getName());
     }
+
 
     /**
      * Add a new user to the manager

@@ -25,6 +25,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+/**
+ * Agent's view's controller
+ */
 public class ctrlAgent {
     public TableView tableTravelUser;
     public TableColumn vDep1;
@@ -50,6 +53,13 @@ public class ctrlAgent {
     private ArrayList<Travel> bd2;
     private Stage stage;
 
+    /**
+     * Controller
+     * @param bd the usermanager
+     * @param bd2 the travel list
+     * @param nom the name of the current user
+     * @param stage
+     */
     public ctrlAgent(UserManager bd, ArrayList<Travel> bd2, String nom, Stage stage){
         this.bd = bd;
         this.bd2 = bd2;
@@ -59,13 +69,16 @@ public class ctrlAgent {
         this.stage = stage;
     }
 
-
+    /**
+     * Method used to dispaly the user's travels table's content
+     */
     public void update(){
         tableTravelUser.setEditable(false);
 
         Collection<Travel> voyagesUsers = courant.getCalendar().get().getTravels().get();
         ArrayList<Voyage> listeVoyagesUser = new ArrayList<>();
 
+        // For each travel, a new Voyage is created to be displayed in the table
         for(Travel trav : voyagesUsers){
             City villeArr = (City)trav.getFirstStep().getStartCity().get();
             City villeDep = (City)trav.getLastStep().getDestinationCity().get();
@@ -84,10 +97,15 @@ public class ctrlAgent {
 
     }
 
-    public void afficher(ActionEvent actionEvent){
+    /**
+     * Method used to display the travel table's content
+     */
+    public void afficher(){
         tableTravel.setEditable(false);
 
         ArrayList<Voyage> listeVoyages = new ArrayList<>();
+
+        // For each travel, a new Voyage is created to be displayed in the table
 
         for(Travel travel : bd2){
             City villeArr = (City)travel.getFirstStep().getStartCity().get();
@@ -107,13 +125,16 @@ public class ctrlAgent {
     }
 
 
-
-    public void ajouter(ActionEvent actionEvent){
+    /**
+     * Method used to add a selected travel to the current Agent's calendar
+     */
+    public void ajouter(){
         Voyage voyage = (Voyage)tableTravel.getSelectionModel().getSelectedItem();
         if(voyage!=null){
             Travel tmp=null;
             for (Travel t : bd2){
                 for (Correspondence c : t.getSteps().get()){
+                    //Looking for the travel corresponding to the voyage
                     if(voyage.equalsTravel(t,c)){
                         tmp=t;
                     }
@@ -133,13 +154,16 @@ public class ctrlAgent {
     }
 
 
-
-    public void supprimer(ActionEvent actionEvent){
+    /**
+     * Method used to remove a selected travel from the current Agent's calendar
+     */
+    public void supprimer(){
         Voyage voyage = (Voyage)tableTravelUser.getSelectionModel().getSelectedItem();
         if(voyage!=null){
             Travel tmp=null;
             for (Travel t : bd2){
                 for (Correspondence c : t.getSteps().get()){
+                    //Looking for the travel corresponding to the voyage
                     if (voyage.equalsTravel(t, c)) {
                         tmp = t;
                     }
@@ -159,6 +183,11 @@ public class ctrlAgent {
 
         }
     }
+
+    /**
+     * Method called to go back to the authentication screen
+     * @throws IOException
+     */
     public void deconnexion(ActionEvent event) throws IOException {
         //construction du controleur du login
         Login login = new Login(bd, bd2, stage);
@@ -179,7 +208,5 @@ public class ctrlAgent {
         Scene scene = new Scene(root, 460, 320);
         stage.setScene(scene);
     }
-
-
 
 }

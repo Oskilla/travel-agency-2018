@@ -1,7 +1,12 @@
 package fr.unantes.software.construction.calendar;
 
-public class SingleReferenceToCity implements SingleRefenrence<City> {
+/**
+ * Single Reference to City class
+ */
+public class SingleReferenceToCity implements SingleReference<City> {
     protected City city;
+
+    /* Interface's methods implementation */
     @Override
     public void set(City newvalue) {
         if(this.isSet()){this.unset();}

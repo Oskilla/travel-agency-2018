@@ -5,13 +5,24 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Multiple Bidirectionnal Reference to Calendar class
+ */
 public class MultipleBidirectionnalReferencesToCalendar implements MultipleReferences<Travel> {
     private List<Travel> travs = new ArrayList<>();
     private final int max;
     private  Calendar cal;
 
+    /**
+     * Constructor
+     * @param cal - the attribute calendar
+     * @param max - the maximum number of travels in a calendar
+     */
     public MultipleBidirectionnalReferencesToCalendar(Calendar cal, int max){this.cal=cal; this.max = max;}
 
+
+
+    /* Interface's methods implementation */
 
     @Override
     public Collection<Travel> get() {

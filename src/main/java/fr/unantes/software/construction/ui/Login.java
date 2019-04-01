@@ -16,6 +16,9 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ArrayList;
 
+/**
+ * Login view controller
+ */
 public class Login {
 
     public TextField idutilisateur;
@@ -29,13 +32,24 @@ public class Login {
     private Stage stage;
     private ArrayList<Travel> listeVoyages;
 
-    public Login(UserManager basededonnee, ArrayList<Travel> listeVoyages, Stage stage) {
-        this.bd = basededonnee;
+    /**
+     * Controller
+     * @param bd the usermanager
+     * @param listeVoyages the travel list
+     * @param stage
+     */
+    public Login(UserManager bd, ArrayList<Travel> listeVoyages, Stage stage) {
+        this.bd = bd;
         this.stage = stage;
         this.listeVoyages = listeVoyages;
     }
 
-    public void login(ActionEvent actionEvent) throws Exception {
+    /**
+     * Method used to check if the user exists.
+     * If so, checks whether it is an Agent or an Administrator, and opens a new view depending on the result
+     * @throws Exception
+     */
+    public void login() throws Exception {
 
         if (idutilisateur.getText().isEmpty()) {
             idmanqueutilisateur.setVisible(true);
@@ -48,8 +62,6 @@ public class Login {
         } else {
             idmanquemdp.setVisible(false);
         }
-        System.out.println(nom);
-
 
         if (!idmdp.getText().isEmpty() && !idutilisateur.getText().isEmpty()) {
 

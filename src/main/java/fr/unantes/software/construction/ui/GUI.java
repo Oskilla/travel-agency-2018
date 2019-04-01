@@ -19,48 +19,51 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+/**
+ * class launching the app
+ */
 public class GUI extends Application  {
 
-
+    private final Person dieu;
     private final Person solineLecomte;
     private final Person gaelLode;
     private final Person yvesmarieCarette;
-    private final Person test;
-
     private final UserManager bd;
     private final ArrayList<Travel> bd2;
-    private final Person dieu;
+
 
     public GUI() throws Exception {
+        /* Creation de la "base de donnees", soit un user manager et une liste de travels*/
         bd =new UserManager();
         bd2 = new ArrayList<Travel>();
 
+        /* Creation du super utilisateur*/
         dieu = new Person("Dieu");
+        bd.addUser(dieu,"mdpdieu");
+
+
+        /* Creation de variables test */
+
         solineLecomte = new Agent("Soline");
         gaelLode = new Administrateur("Gael");
         yvesmarieCarette = new Administrateur("Yves-Marie");
-        test = new Agent("test");
 
-
-        bd.addUser(dieu,"mdpdieu");
         bd.addUser(solineLecomte, "mdpsoline");
         bd.addUser(gaelLode, "mdpgael");
         bd.addUser(yvesmarieCarette, "mdpyvesmarie");
-        bd.addUser(test, "test");
-
 
 
         Calendar cal1 = new Calendar((Agent)solineLecomte);
-        City cit1 = new City ("country1","cname1");
-        City cit2 = new City ("country2", "cname2");
-        City cit3 = new City ("country1","cname3");
-        City cit4 = new City ("country3", "cname4");
-        Date date1 = new Date(1995,12,1);
-        Date date2 = new Date(2005,12,1);
-        Date date3 = new Date(2015,12,1);
-        Date date4 = new Date(2025,12,1);
-        Date date5 = new Date(2035,12,1);
-        Date date6 = new Date(2035,12,1);
+        City cit1 = new City ("Maroc","Rabat");
+        City cit2 = new City ("Allemagne", "Berlin");
+        City cit3 = new City ("Chili","Santiago");
+        City cit4 = new City ("Ireland", "Shannon");
+        Date date1 = new Date(2019,1,12);
+        Date date2 = new Date(2019,2,12);
+        Date date3 = new Date(2019,3,1);
+        Date date4 = new Date(2019,4,1);
+        Date date5 = new Date(2019,5,1);
+        Date date6 = new Date(2019,6,1);
 
 
         Travel trav1 = new Travel(cal1);
@@ -90,23 +93,17 @@ public class GUI extends Application  {
         bd2.add(trav2);
         bd2.add(trav3);
 
-
         ArrayList<Agent> listeAgent = bd.getAgents();
         Agent courant = listeAgent.get(listeAgent.indexOf(bd.getNamesToUsers().get("Soline")));
-
         courant.getCalendar().get().getTravels().add(trav1);
-
-
-        Collection<Travel> travels = courant.getCalendar().get().getTravels().get();
-        System.out.println(travels);
-
-
-
     }
 
 
-
-
+    /**
+     *Method launching the app on the first view
+     * @param stage
+     * @throws Exception
+     */
     @Override
     public void start(Stage stage) throws Exception {
 

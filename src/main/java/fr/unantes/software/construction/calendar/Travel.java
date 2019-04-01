@@ -3,7 +3,6 @@ package fr.unantes.software.construction.calendar;
 import com.sun.istack.internal.NotNull;
 
 import java.io.InvalidClassException;
-import java.util.ArrayList;
 
 /**
  * A Travel has up to 10 steps/correspondences
@@ -13,7 +12,7 @@ public class Travel {
     private MultipleBidirectionnalReferencesToTravel steps ;
     private static final int taillesteps = 10;
     private static final int taillemin = 1;
-    private SingleRefenrence<Calendar> parent = new SingleBidirectionnalReferenceToTravel(this);
+    private SingleReference<Calendar> parent = new SingleBidirectionnalReferenceToTravel(this);
 
     /**
      * Travel's constructor
@@ -37,7 +36,7 @@ public class Travel {
      * Method to get the Calendar in which the travel is in
      * @return a single reference to calendar - to get the Calendar itself, use the single reference's method get
      */
-    public SingleRefenrence<Calendar> getParent() {
+    public SingleReference<Calendar> getParent() {
         return parent;
     }
 

@@ -5,17 +5,30 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+
+/**
+ * Multiple Bidirectionnal Reference to Calendar class
+ */
 public class MultipleBidirectionnalReferencesToTravel implements MultipleReferences<Correspondence> {
     private List<Correspondence> corr = new ArrayList<>();
     private final int max;
     private final int min;
     private Travel trav;
 
+    /**
+     * Constructor
+     * @param trav The travel that will "own" the correspondences
+     * @param max The maximum number of correspondences in the travel
+     * @param min The minimum number of correspondences in the travel
+     */
     public MultipleBidirectionnalReferencesToTravel(Travel trav, int max, int min) {
         this.trav = trav;
         this.max = max;
         this.min = min;
     }
+
+
+    /* Interface's methods implementation */
 
     @Override
     public Collection<Correspondence> get() {

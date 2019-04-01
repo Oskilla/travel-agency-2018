@@ -27,8 +27,10 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 
-
-public class GestionVoyages {
+/**
+ * Travel manager SuperUser's view controller
+ */
+public class ctrlGestionVoyages {
 
     private UserManager bd;
     private ArrayList<Travel> bd2;
@@ -52,13 +54,22 @@ public class GestionVoyages {
     public TableColumn pArr2;
     public TableColumn hArr2;
 
-    public GestionVoyages(UserManager bd, ArrayList<Travel> bd2, Stage stage) {
+    /**
+     * Controller
+     * @param bd the usermanager
+     * @param bd2 the travel list
+     * @param stage
+     * @throws Exception
+     */
+    public ctrlGestionVoyages(UserManager bd, ArrayList<Travel> bd2, Stage stage) {
         this.bd = bd;
         this.bd2 = bd2;
         this.stage = stage;
     }
 
-
+    /**
+     * Method used to display the travels table's content
+     */
     public void afficher(){
         tableTravel.setEditable(false);
 
@@ -81,7 +92,10 @@ public class GestionVoyages {
 
     }
 
-
+    /**
+     * Method used to delete the selected travel
+     * @param event
+     */
     public void supprimer(ActionEvent event) {
 
         Voyage voyage = (Voyage) tableTravel.getSelectionModel().getSelectedItem();
@@ -97,6 +111,7 @@ public class GestionVoyages {
             }
 
             bd2.remove(tmp);
+            // On va chercher si le voyage est associé à ds utilisateurs. Si oui, on le supprime
             for(Agent agent : bd.getAgents()){
                 Travel tmp2 = null;
                 for(Travel travel : agent.getCalendar().get().getTravels().get()){
@@ -113,6 +128,37 @@ public class GestionVoyages {
         }
     }
 
+    /**
+     * Method used to create a new travel
+     * @throws Exception
+     */
+    public void ajout() throws Exception {
+        if(     !(idHarr.getValue()==null) &&
+                !(idHdepart.getValue()==null) &&
+                !idParr.getText().isEmpty() &&
+                !idPdepart.getText().isEmpty() &&
+                !idVarr.getText().isEmpty() &&
+                !idVdepart.getText().isEmpty()){
+            City c = new City(idPdepart.getText(),idVdepart.getText());
+            City c2 = new City(idParr.getText(),idVarr.getText());
+            Correspondence corr  = new Correspondence(c,c2,Date.from(idHdepart.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()), Date.from(idHarr.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+            Travel nouveautravel = new Travel();
+            nouveautravel.getSteps().add(corr);
+            bd2.add(nouveautravel);
+            idmanquechamps.setVisible(false);
+        }
+        else{
+            idmanquechamps.setVisible(true);
+        }
+
+        this.afficher();
+
+    }
+
+    /**
+     * Method used to go back to the User Manager controller
+     * @throws Exception
+     */
     public void precedent() throws Exception {
         //construction du controleur du login
         ctrlSuperUtilisateur ctrl = new ctrlSuperUtilisateur(bd, bd2, stage);
@@ -134,7 +180,10 @@ public class GestionVoyages {
         stage.setScene(scene);
     }
 
-
+    /**
+     * Method called to go back to the authentication screen
+     * @throws IOException
+     */
     public void deconnexion(ActionEvent event) throws IOException {
         //construction du controleur du login
         Login login = new Login(bd, bd2, stage);
@@ -157,27 +206,6 @@ public class GestionVoyages {
     }
 
 
-    public void ajout() throws Exception {
-        if(     !(idHarr.getValue()==null) &&
-                !(idHdepart.getValue()==null) &&
-                !idParr.getText().isEmpty() &&
-                !idPdepart.getText().isEmpty() &&
-                !idVarr.getText().isEmpty() &&
-                !idVdepart.getText().isEmpty()){
-            City c = new City(idPdepart.getText(),idVdepart.getText());
-            City c2 = new City(idParr.getText(),idVarr.getText());
-            Correspondence corr  = new Correspondence(c,c2,Date.from(idHdepart.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()), Date.from(idHarr.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-            Travel nouveautravel = new Travel();
-            nouveautravel.getSteps().add(corr);
-            bd2.add(nouveautravel);
-            idmanquechamps.setVisible(false);
-            }
-        else{
-            idmanquechamps.setVisible(true);
-        }
 
-        this.afficher();
-
-    }
 
 }

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="20.0" minWidth="10.0" prefHeight="425.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="9999.0" maxWidth="9999.0" minHeight="20.0" minWidth="10.0" prefHeight="425.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="297.0" layoutY="14.0" text="Gestion des voyages">
          <font>
