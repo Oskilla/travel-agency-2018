@@ -2,16 +2,49 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="345.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Label layoutX="191.0" layoutY="14.0" text="Gestion des voyages">
             <font>
                 <Font size="24.0" />
             </font>
         </Label>
-        <Button layoutX="257.0" layoutY="361.0" mnemonicParsing="false" onAction="#deconnexion" text="Deconnexion" />
+        <TableView fx:id="tableTravel" layoutX="14.0" layoutY="98.0" prefHeight="200.0" prefWidth="572.0">
+            <columns>
+                <TableColumn fx:id="vDep2" prefWidth="94.0" text="Ville Depart" />
+                <TableColumn fx:id="pDep2" prefWidth="97.0" text="Pays Depart" />
+                <TableColumn fx:id="hDep2" prefWidth="97.0" text="Date Depart" />
+                <TableColumn fx:id="vArr2" prefWidth="98.0" text="Ville Arrivee" />
+                <TableColumn fx:id="pArr2" prefWidth="107.0" text="Pays Arrivee" />
+                <TableColumn fx:id="hArr2" prefWidth="78.0" text="Date Arrivee" />
+            </columns>
+        </TableView>
+        <Button fx:id="afficher_maj1" layoutX="14.0" layoutY="307.0" mnemonicParsing="false" onAction="#afficher" prefHeight="26.0" prefWidth="135.0" text="Afficher" />
+      <Button layoutX="206.0" layoutY="308.0" mnemonicParsing="false" onAction="#supprimer" text="Supprimer le voyage selectionné" />
+      <Button fx:id="logout" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#precedent">
+         <graphic>
+            <ImageView fitHeight="27.0" fitWidth="62.0" layoutX="519.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+               <image>
+                  <Image url="@/images/exit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="logout" layoutX="551.0" layoutY="14.0" mnemonicParsing="false" onAction="#deconnexion">
+         <graphic>
+            <ImageView fitHeight="27.0" fitWidth="62.0" layoutX="519.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/exit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
     </children>
 </AnchorPane>

@@ -1,10 +1,18 @@
 package fr.unantes.software.construction.ui;
 
+import fr.unantes.software.construction.calendar.City;
+import fr.unantes.software.construction.calendar.Correspondence;
 import fr.unantes.software.construction.calendar.Travel;
+import fr.unantes.software.construction.people.Agent;
 import fr.unantes.software.construction.security.UserManager;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -13,6 +21,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class GestionVoyages {
@@ -21,10 +30,95 @@ public class GestionVoyages {
     private ArrayList<Travel> bd2;
     private Stage stage;
 
+
+    public TableView tableTravel;
+    public TableColumn vDep2;
+    public TableColumn pDep2;
+    public TableColumn hDep2;
+    public TableColumn vArr2;
+    public TableColumn pArr2;
+    public TableColumn hArr2;
+
     public GestionVoyages(UserManager bd, ArrayList<Travel> bd2, Stage stage) {
         this.bd = bd;
         this.bd2 = bd2;
         this.stage = stage;
+    }
+
+
+    public void afficher(){
+        tableTravel.setEditable(false);
+
+        ArrayList<Voyage> listeVoyages = new ArrayList<>();
+
+        for(Travel travel : bd2){
+            City villeArr = (City)travel.getFirstStep().getStartCity().get();
+            City villeDep = (City)travel.getLastStep().getDestinationCity().get();
+            listeVoyages.add(new Voyage(villeDep.getName(),villeDep.getCountry(),travel.getFirstStep().getStartTime(), villeArr.getName(), villeArr.getCountry(), travel.getLastStep().getArrivalTime()));
+        }
+
+        vDep2.setCellValueFactory(new PropertyValueFactory<Voyage,String>("departV"));
+        pDep2.setCellValueFactory(new PropertyValueFactory<Voyage,String>("departP"));
+        hDep2.setCellValueFactory(new PropertyValueFactory<Voyage, Date>("hDep"));
+        vArr2.setCellValueFactory(new PropertyValueFactory<Voyage,String>("arriveeV"));
+        pArr2.setCellValueFactory(new PropertyValueFactory<Voyage,String>("arriveeP"));
+        hArr2.setCellValueFactory(new PropertyValueFactory<Voyage,Date>("hArr"));
+        ObservableList<Voyage> list2 = FXCollections.observableArrayList(listeVoyages);
+        tableTravel.setItems(list2);
+
+    }
+
+
+    public void supprimer(ActionEvent event) {
+
+        Voyage voyage = (Voyage) tableTravel.getSelectionModel().getSelectedItem();
+        System.out.println();
+        if (voyage != null) {
+            Travel tmp = null;
+            for (Travel t : bd2) {
+                for (Correspondence c : t.getSteps().get()) {
+                    if (voyage.equalsTravel(t, c)) {
+                        tmp = t;
+                    }
+                }
+            }
+
+            bd2.remove(tmp);
+            for(Agent agent : bd.getAgents()){
+                Travel tmp2 = null;
+                for(Travel travel : agent.getCalendar().get().getTravels().get()){
+                    if(travel==tmp){
+                        tmp2 = travel;
+                    }
+                }
+                if(tmp2 != null){
+                    agent.getCalendar().get().getTravels().remove(tmp2);
+                }
+            }
+            this.afficher();
+
+        }
+    }
+
+    public void precedent() throws Exception {
+        //construction du controleur du login
+        ctrlSuperUtilisateur ctrl = new ctrlSuperUtilisateur(bd, bd2, stage);
+
+        // Localisation du fichier FXML.<
+        final URL url = getClass().getResource("/views/VueSuperUtilisateur.fxml");
+
+        // Création du loader.
+        final FXMLLoader fxmlLoader = new FXMLLoader(url);
+
+        //Affection du controleur
+        fxmlLoader.setController(ctrl);
+
+        // Chargement du FXML.
+        final AnchorPane root = (AnchorPane) fxmlLoader.load();
+
+
+        Scene scene = new Scene(root, 630, 400);
+        stage.setScene(scene);
     }
 
 

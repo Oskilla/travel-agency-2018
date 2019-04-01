@@ -91,13 +91,13 @@ public class ctrlSuperUtilisateur {
 
 
     public void ajoututilisateur() throws Exception {
-        if(idnouveaunom.getText().isEmpty()||idnouveaumdp.getText().isEmpty()||idnouveaurole.getText().isEmpty()){
+        if (idnouveaunom.getText().isEmpty() || idnouveaumdp.getText().isEmpty() || idnouveaurole.getText().isEmpty()) {
             idmanquechamp.setVisible(true);
-        }else{
+        } else {
             idmanquechamp.setVisible(false);
             if (!(idnouveaurole.getText().compareTo("Agent") == 0) && !(idnouveaurole.getText().compareTo("Administrateur") == 0)) {
                 idmanquerole.setVisible(true);
-            }else {
+            } else {
                 idmanquerole.setVisible(false);
                 if (idnouveaurole.getText().compareTo("Agent") == 0) {
                     Person nouveau = new Agent(idnouveaunom.getText());
@@ -126,7 +126,7 @@ public class ctrlSuperUtilisateur {
 
         Person perso = (Person) idlistutilisateur.getSelectionModel().getSelectedItem();
 
-        System.out.println("Vous voulez suprrimer cette personne" + perso.getName());
+        System.out.println("Vous voulez suprrimer cette personne " + perso.getName());
 
 
         if (perso instanceof Administrateur) {
@@ -186,14 +186,45 @@ public class ctrlSuperUtilisateur {
         final AnchorPane root = (AnchorPane) fxmlLoader.load();
 
 
-        Scene scene = new Scene(root, 620, 400);
+        Scene scene = new Scene(root, 600, 345);
         stage.setScene(scene);
     }
 
-    public void modifier(ActionEvent event) throws Exception{
+    public void modifier(ActionEvent event) throws Exception {
 
+        Person perso = idlistutilisateur.getSelectionModel().getSelectedItem();
+        perso.setName(perso.getName().replace(" (Administrateur)", ""));
+        perso.setName(perso.getName().replace(" (Agent)", ""));
+        String nom = perso.getName();
+        String mdp = bd.getMapMdp().getMdp(perso);
+        String role = null;
+
+        if (perso instanceof Agent) {
+            role = "Agent";
+        } else {
+            role = "Administrateur";
+        }
+
+        if (!idnouveaunom.getText().isEmpty()) {
+            nom = idnouveaunom.getText();
+        }
+        if (!idnouveaumdp.getText().isEmpty()) {
+            mdp = idnouveaumdp.getText();
+        }
+        if (idnouveaurole.getText().compareTo("Agent") == 0 || idnouveaurole.getText().compareTo("Administrateur") == 0) {
+            role = idnouveaurole.getText();
+            System.out.println(role + " fbuekqgfqukdqeqfek");
+        }
         this.supprimerutilisateur();
-        this.ajoututilisateur();
+        if (role.compareTo("Agent") ==0){
+            Person nouveau = new Agent(nom);
+            bd.addUser(nouveau, mdp);
+            this.miseajour();
+        } else if (role.compareTo("Administrateur")==0) {
+            Person nouveau = new Administrateur(nom);
+            bd.addUser(nouveau, mdp);
+            this.miseajour();
+        }
 
     }
 }
